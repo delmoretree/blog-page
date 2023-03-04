@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+
+	<!-- title -->
+	
+	<title>
+	
+		互斥锁解决原子性问题 | 
+	 
+	tech note
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.baidu.com/s?wd=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "blog.technote.tech";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">tech note</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/delmoretree" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-代数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/01-%E7%9F%A9%E9%98%B5/">
+										01-矩阵
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/02-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">
+										02-线性空间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/03-%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84/">
+										03-线性映射
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/04-%E5%A4%9A%E9%A1%B9%E5%BC%8F/">
+										04-多项式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/05-%E7%89%B9%E5%BE%81%E5%80%BC/">
+										05-特征值
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/06-%E7%9B%B8%E4%BC%BC%E6%A0%87%E5%87%86%E5%9E%8B/">
+										06-相似标准型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/07-%E4%BA%8C%E6%AC%A1%E5%9E%8B/">
+										07-二次型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/08-%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4/">
+										08-内积空间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/09-%E7%BE%A4%E8%AE%BA/">
+										09-群论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/10-%E7%8E%AF%E8%AE%BA/">
+										10-环论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/11-%E5%9F%9F%E8%AE%BA/">
+										11-域论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-分析学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/01-%E5%AE%9E%E6%95%B0%E7%B3%BB%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7/">
+										01-实数系的连续性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/02-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/">
+										02-数列极限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/03-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90/">
+										03-函数极限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/04-%E6%97%A0%E7%A9%B7%E5%B0%8F/">
+										04-无穷小
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/05-%E8%BF%9E%E7%BB%AD%E4%B8%8E%E9%97%B4%E6%96%AD/">
+										05-连续与间断
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/06-%E5%AF%BC%E6%95%B0/">
+										06-导数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/07-%E5%BE%AE%E5%88%86/">
+										07-微分
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/08-%E5%BE%AE%E5%88%86%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/">
+										08-微分中值定理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-初等数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/03-%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/%E4%B8%8D%E7%AD%89%E5%BC%8F/">
+										不等式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/03-%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">
+										数理逻辑
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										11-组成原理
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1. 指令
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-1-%E6%8C%87%E4%BB%A4%E6%A6%82%E8%BF%B0/">
+										1-1-指令概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-2-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4/">
+										1-2-算数运算指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-3-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4/">
+										1-3-数据传输指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-4-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4/">
+										1-4-逻辑运算指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-5-%E5%86%B3%E7%AD%96%E6%8C%87%E4%BB%A4/">
+										1-5-决策指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-6-%E8%BF%87%E7%A8%8B%E7%9A%84%E6%89%A7%E8%A1%8C/">
+										1-6-过程的执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/%E9%99%84-MIPS%E6%8C%87%E4%BB%A4/">
+										附-MIPS指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										12-操作系统
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										进程管理
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/1-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+										1-进程与线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/2-%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5/">
+										2-互斥与同步
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/3-%E6%AD%BB%E9%94%81%E4%B8%8E%E9%A5%A5%E9%A5%BF/">
+										3-死锁与饥饿
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										13-数据库
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/">
+										MySQL常见操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/1-MySQL%E7%9A%84%E6%89%A7%E8%A1%8C/">
+										1-MySQL的执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%9A%84%E9%94%81/">
+										MySQL的锁
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E4%BA%8B%E5%8A%A1/">
+										事务
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E7%B4%A2%E5%BC%95/">
+										索引
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Redis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+										数据结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										14-软件工程
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										设计模式
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1.面向对象
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%85%85%E8%A1%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%B4%AB%E8%A1%80%E6%A8%A1%E5%9E%8B/">
+										充血模型和贫血模型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7/">
+										四大特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E8%80%8C%E9%9D%9E%E5%AE%9E%E7%8E%B0%E7%BC%96%E7%A8%8B/">
+										基于接口而非实现编程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/">
+										面向对象与面向过程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2.设计原则
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/DRY%E5%8E%9F%E5%88%99/">
+										DRY原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/KISS%E3%80%81YAGNI%E5%8E%9F%E5%88%99/">
+										KISS、YAGNI原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/LOD%E5%8E%9F%E5%88%99/">
+										LOD原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/SOLID%E5%8E%9F%E5%88%99/">
+										SOLID原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%80%A7/">
+										代码复用性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3.规范与重构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.%E8%A7%84%E8%8C%83%E4%B8%8E%E9%87%8D%E6%9E%84/%E9%87%8D%E6%9E%84/">
+										重构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										4.创建型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+										单例模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+										原型模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+										工厂模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
+										建造者模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										5.结构型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/">
+										享元模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
+										代理模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">
+										桥接模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">
+										组合模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										装饰器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										适配器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										6.行为型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F/">
+										中介模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/">
+										模板模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">
+										策略模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/">
+										职责链模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+										观察者模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										迭代器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										15-软件开发
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JAVA
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JAVA/%E5%86%85%E7%9C%81/">
+										内省
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/01-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">
+										01-JVM内存结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/02-%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+										02-自动内存管理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MyBatis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/MyBatis/MyBatis%E7%AE%80%E4%BB%8B/">
+										MyBatis简介
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Spring
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/01-IoC%E5%AE%B9%E5%99%A8/">
+										01-IoC容器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/AOP%EF%BC%88%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%EF%BC%89/">
+										AOP（面向切面编程）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/%E9%85%8D%E7%BD%AE/">
+										配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										并发
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/0-Java%E7%BA%BF%E7%A8%8B/">
+										0-Java线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/1-%E5%B9%B6%E5%8F%91%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98/">
+										1-并发存在的问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/2-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98/">
+										2-Java内存模型解决可见性和有序性问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/3-%E4%BA%92%E6%96%A5%E9%94%81%E8%A7%A3%E5%86%B3%E5%8E%9F%E5%AD%90%E6%80%A7%E9%97%AE%E9%A2%98/">
+										3-互斥锁解决原子性问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/4-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/">
+										4-线程同步
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										16-系统运维
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/CentOS%E4%B8%AD%E7%9A%84RabbitMQ/">
+										CentOS中的RabbitMQ
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/GitLab%E6%8E%92%E9%94%99/">
+										GitLab排错
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/Linux%E6%8C%82%E8%BD%BDWindows%E5%85%B1%E4%BA%AB%E7%9B%98/">
+										Linux挂载Windows共享盘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE/">
+										防火墙设置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	互斥锁解决原子性问题
+</h1>
+<div class="article-meta">
+	
+	<span>Delmore</span>
+	<span>2021-02-22 23:45:40</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<p>在多核架构的系统下，可能同时有多个程序正在被执行，如果不加限制的访问共享资源，将会影响程序运行的正确性。<br />
+保证访问共享资源的进程之间是<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/2-%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5/">互斥</a>的，就能保证程序执行的原子性。</p>
+<h1 id="通过-synchronized-实现的管程"><a class="markdownIt-Anchor" href="#通过-synchronized-实现的管程"></a> 通过 <code>synchronized</code> 实现的管程</h1>
+<p>在Java中，通过 <code>synchronized</code> 关键字提供互斥原语，对对象尝试加锁，如果成功，则进入临界区。否则就等待，直到持有锁的线程解锁后重新尝试加锁。</p>
+<p><code>synchronized</code> 修饰的对象，在执行时会自动进行加锁和解锁操作。根据内存模型的<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/2-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98/#%E7%AE%A1%E7%A8%8B%E4%B8%AD%E9%94%81%E7%9A%84%E8%A7%84%E5%88%99">管程中锁的规则</a><br />
+可以得出：前一个线程在临界区对共享变量的修改，对后续进入临界区的线程是可见的。</p>
+<h2 id="等待-通知机制预防死锁"><a class="markdownIt-Anchor" href="#等待-通知机制预防死锁"></a> 等待-通知机制预防死锁</h2>
+<p>在预防死锁发生的<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/3-%E6%AD%BB%E9%94%81%E4%B8%8E%E9%A5%A5%E9%A5%BF/#%E9%A2%84%E9%98%B2%E5%8D%A0%E6%9C%89%E4%B8%94%E7%AD%89%E5%BE%85">占有且等待的条件</a>时，如果通过死循环的方式不停的尝试需要占用的所有资源，并发量大时，对性能会产生恶劣的影响。可通过<strong>等待-通知机制</strong>来改进。</p>
+<p><strong>原理：</strong></p>
+<ol>
+<li>线程首先获取互斥锁（通过 <code>synchronized</code> 关键字），</li>
+<li>当要求的条件不满足时，释放互斥锁，进入 <strong>等待</strong> 状态（调用 <code>wait()</code> 方法）；</li>
+<li>待要求的条件满足后， <strong>通知</strong> 等待的线程（调用 <code>notify()</code> 或 <code>notifyAll()</code> 方法）；</li>
+<li>被通知的线程需要重新判断条件是否满足（只保证在通知的当下，条件是满足的），重新获取互斥锁。</li>
+</ol>
+<blockquote>
+<ul>
+<li>即便通知所有线程（通过调用 <code>notifyAll()</code> 方法），最终也只会有一个线程进入临界区。</li>
+<li>只通知一个线程（通过调用 <code>notify()</code> 方法），可能会导致某些线程永远不会被通知到。</li>
+</ul>
+</blockquote>
+<h2 id="唤醒阻塞的线程破除死锁的不可抢占条件"><a class="markdownIt-Anchor" href="#唤醒阻塞的线程破除死锁的不可抢占条件"></a> 唤醒阻塞的线程破除死锁的不可抢占条件</h2>
+<p>通过 <code>synchronized</code> 申请资源如果申请不到会阻塞线程。一旦发生死锁，没有机会唤醒阻塞的线程。</p>
+<p><strong>Lock</strong>接口提供的方法支持阻塞的线程被唤醒，从而有机会释放曾经持有的锁，破除了<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/3-%E6%AD%BB%E9%94%81%E4%B8%8E%E9%A5%A5%E9%A5%BF/#%E9%A2%84%E9%98%B2%E4%B8%8D%E5%8F%AF%E6%8A%A2%E5%8D%A0">不可抢占条件</a>，预防了死锁的发生。</p>
+<ul>
+<li>
+<p>Lock接口支持中断：</p>
+<p><code>void lockInterruptibly() throws InterruptedException</code> 方法能够触发 <code>InterruptedException</code> 中断，从而被唤醒。</p>
+</li>
+<li>
+<p>Lock接口支持超时：</p>
+<p><code>boolean tryLock(long time, TimeUnit unit) throws InterruptedException</code> 方法支持超时，如果一段时间内没有成功获取到锁，被唤醒后可释放曾经持有的锁。</p>
+</li>
+<li>
+<p>Lock接口支持非阻塞地获取锁：</p>
+<p><code>boolean tryLock()</code> 如果尝试获取锁失败，并不进入阻塞状态，而是直接返回，那这个线程也有机会释放曾经持有的锁。</p>
+</li>
+</ul>
+<p><strong>Lock锁的可见性保证</strong></p>
+<p>在 <code>ReentrantLock</code> 内部持有一个 <code>volatile</code> 的成员变量 <code>state</code> ，获取锁和解锁的时候，会读写 <code>state</code> 值，从而保证了解锁相对于后续对这个锁的加锁是可见的。</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">X</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Lock rtl = <span class="hljs-keyword">new</span> ReentrantLock();
+    <span class="hljs-keyword">int</span> value;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addOne</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-comment">// 获取锁</span>
+        rtl.lock();  
+        <span class="hljs-keyword">try</span> &#123;
+            value+=<span class="hljs-number">1</span>;
+        &#125; <span class="hljs-keyword">finally</span> &#123;
+            <span class="hljs-comment">// 保证锁能释放</span>
+            rtl.unlock();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li>在执行 <code>value += 1</code> 之前，程序先读写了一次 <code>volatile</code> 变量 <code>state</code>；</li>
+<li>在执行 <code>value += 1</code> 之后，又读写了一次 <code>volatile 变量 state</code>；</li>
+</ul>
+<blockquote>
+<p><code>ReentrantLock</code> 是可重入锁，即拥有该锁的线程，可再次成功的对该锁执行加锁操作。( <code>synchronized</code> 也是可重入锁 )</p>
+</blockquote>
+<p><strong>Lock锁和synchronized的区别</strong></p>
+<ul>
+<li>
+<p><code>Lock</code> 需要手动加锁和解锁，<code>synchronized</code> 代码块运行完毕后会自动解锁；</p>
+</li>
+<li>
+<p><code>ReentrantLock</code> 在实例化时，可设置公平性，减少线程<em>饥饿</em>的概率；</p>
+<blockquote>
+<p>Java的调度策略很少发生<em>饥饿</em>，保证公平性会引入额外的开销，建议当程序确实有公平性需求的时候再指定。</p>
+</blockquote>
+</li>
+<li>
+<p><code>synchronized</code> 无法支持中断、超时等更便利精细的操作。</p>
+</li>
+</ul>
+<p><strong>用锁的最佳实践</strong></p>
+<ol>
+<li>
+<p>永远只在更新对象的成员变量时加锁</p>
+</li>
+<li>
+<p>永远只在访问可变的成员变量时加锁</p>
+</li>
+<li>
+<p>永远不在调用其他对象的方法时加锁</p>
+<blockquote>
+<p>调用其他对象的方法，实在是太不安全了，也许 <em>其他</em> 方法里面有线程 <code>sleep()</code> 的调用，也可能会有奇慢无比的 I/O 操作，这些都会严重影响性能。更可怕的是，<em>其他</em> 类的方法可能也会加锁，然后双重加锁就可能导致死锁。</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="通过-lock-和-condition-实现的管程"><a class="markdownIt-Anchor" href="#通过-lock-和-condition-实现的管程"></a> 通过 <code>Lock</code> 和 <code>Condition</code> 实现的管程</h1>
+<p><code>synchronized</code> 实现的管程只有一个条件，通过 <code>Lock&amp;Condition</code> 实现的管程支持多个条件：</p>
+<h1 id="信号量"><a class="markdownIt-Anchor" href="#信号量"></a> 信号量</h1>
+<p><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/2-%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5/#%E4%BF%A1%E5%8F%B7%E9%87%8F">信号量</a>是保证临界区安全的另一种手段。</p>
+<h2 id="pv操作"><a class="markdownIt-Anchor" href="#pv操作"></a> PV操作</h2>
+<p>信号量模型提供三个原子性的方法给外界访问：</p>
+<ul>
+<li>
+<p>初始化</p>
+<p>设置初始值</p>
+</li>
+<li>
+<p>P操作</p>
+<p>即 <code>acquire()</code> 方法。值减 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ，如果值小于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 则当前线程阻塞。</p>
+</li>
+<li>
+<p>V操作</p>
+<p>即 <code>release()</code> 方法。值加 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ，如果值大于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 则唤醒等待队列中的一个线程，并移除队列。</p>
+</li>
+</ul>
+<p>例：</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> count;
+<span class="hljs-comment">//初始化信号量</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Semaphore s = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);
+<span class="hljs-comment">//用信号量保证互斥    </span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addOne</span><span class="hljs-params">()</span> </span>&#123;
+  s.acquire();
+  <span class="hljs-keyword">try</span> &#123;
+    count+=<span class="hljs-number">1</span>;
+  &#125; <span class="hljs-keyword">finally</span> &#123;
+    s.release();
+  &#125;
+&#125;
+</code></pre>
+<ul>
+<li>线程1调用 <code>acquire()</code> 方法将信号量减为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> ，继续执行；</li>
+<li>线程2调用 <code>acquire()</code> 方法将信号量减为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span> ，被阻塞；</li>
+<li>线程1调用 <code>release()</code> 方法将信号量加为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> ，并唤醒线程2；</li>
+</ul>
+<h2 id="多个线程同时访问临界区"><a class="markdownIt-Anchor" href="#多个线程同时访问临界区"></a> 多个线程同时访问临界区</h2>
+<p>与互斥锁不同，信号量可以允许多个线程同时访问同一个临界区。</p>
+<p>使用信号量模型实现的对象池：</p>
+<pre class="highlight"><code class="java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ObjPool</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">R</span>&gt; </span>&#123;
+    <span class="hljs-keyword">final</span> List&lt;T&gt; pool;
+  
+    <span class="hljs-comment">// 用信号量实现限流器</span>
+    <span class="hljs-keyword">final</span> Semaphore sem;
+
+    ObjPool(<span class="hljs-keyword">int</span> size, T t)&#123;
+        pool = <span class="hljs-keyword">new</span> Vector&lt;T&gt;()&#123;&#125;;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++)&#123;
+            pool.add(t);
+        &#125;
+        sem = <span class="hljs-keyword">new</span> Semaphore(size);
+    &#125;
+
+    <span class="hljs-comment">// 利用对象池的对象，调用func</span>
+    <span class="hljs-function">R <span class="hljs-title">exec</span><span class="hljs-params">(Function&lt;T, R&gt; func)</span> </span>&#123;
+        T t = <span class="hljs-keyword">null</span>;
+        sem.acquire();
+        <span class="hljs-keyword">try</span> &#123;
+            t = pool.remove(<span class="hljs-number">0</span>);
+            <span class="hljs-keyword">return</span> func.apply(t);
+        &#125; <span class="hljs-keyword">finally</span> &#123;
+            pool.add(t);
+            sem.release();
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 创建对象池</span>
+ObjPool&lt;Long, String&gt; pool = <span class="hljs-keyword">new</span> ObjPool&lt;Long, String&gt;(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>);
+<span class="hljs-comment">// 通过对象池获取t，之后执行  </span>
+pool.exec(t -&gt; &#123;
+    System.out.println(t);
+    <span class="hljs-keyword">return</span> t.toString();
+&#125;);
+</code></pre>
+<h1 id="readwritelock锁"><a class="markdownIt-Anchor" href="#readwritelock锁"></a> ReadWriteLock锁</h1>
+<p>ReadWriteLock锁遵循三个基本原则：</p>
+<ol>
+<li>允许多个线程同时获得读锁；</li>
+<li>只允许一个线程获得写锁；</li>
+<li>如果一个线程获得了写锁，禁止其他线程获得锁。</li>
+</ol>
+<p>例，一个缓存工具类：</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cache</span>&lt;<span class="hljs-title">K</span>,<span class="hljs-title">V</span>&gt; </span>&#123;
+    <span class="hljs-keyword">final</span> Map&lt;K, V&gt; m = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    <span class="hljs-keyword">final</span> ReadWriteLock rwl = <span class="hljs-keyword">new</span> ReentrantReadWriteLock();
+    
+    <span class="hljs-comment">// 读锁</span>
+    <span class="hljs-keyword">final</span> Lock r = rwl.readLock();
+    
+    <span class="hljs-comment">// 写锁</span>
+    <span class="hljs-keyword">final</span> Lock w = rwl.writeLock();
+
+    <span class="hljs-comment">// 读缓存</span>
+    <span class="hljs-function">V <span class="hljs-title">get</span><span class="hljs-params">(K key)</span> </span>&#123;
+        r.lock();
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">return</span> m.get(key);
+        &#125;
+        <span class="hljs-keyword">finally</span> &#123;
+            r.unlock();
+        &#125;
+    &#125;
+
+    <span class="hljs-comment">// 写缓存</span>
+    <span class="hljs-function">V <span class="hljs-title">put</span><span class="hljs-params">(K key, V value)</span> </span>&#123;
+        w.lock();
+        <span class="hljs-keyword">try</span> &#123; 
+            <span class="hljs-keyword">return</span> m.put(key, v);
+        &#125;
+        <span class="hljs-keyword">finally</span> &#123;
+            w.unlock();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>读写锁不支持升级</strong></p>
+<p>获取读锁后，在释放读锁之后，能够成功获取写锁，称为锁的<strong>升级</strong>。读写锁中，如果没有释放读锁就尝试获得写锁，会导致永久等待。</p>
+<p><strong>读写锁支持降级</strong></p>
+<p>获取写锁后，在释放之前，能够成功获得读锁，称为锁的<strong>降级</strong>。</p>
+<h1 id="stampedlock锁"><a class="markdownIt-Anchor" href="#stampedlock锁"></a> StampedLock锁</h1>
+<p>StampedLock锁支持三种模式：</p>
+<ol>
+<li>
+<p>写锁</p>
+</li>
+<li>
+<p>悲观读锁</p>
+</li>
+<li>
+<p>乐观读</p>
+</li>
+</ol>
+<p>该操作是无锁的。因此性能比读写锁好。</p>
+<p>例：</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> x, y;
+    <span class="hljs-keyword">final</span> StampedLock sl = <span class="hljs-keyword">new</span> StampedLock();
+
+    <span class="hljs-comment">// 计算到原点的距离  </span>
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">distanceFromOrigin</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-comment">// 乐观读</span>
+        <span class="hljs-keyword">long</span> stamp = sl.tryOptimisticRead();
+    
+        <span class="hljs-comment">// 读入局部变量，过程中数据可能被修改</span>
+        <span class="hljs-keyword">int</span> curX = x, curY = y;
+    
+        <span class="hljs-comment">// 判断执行读操作期间，</span>
+        <span class="hljs-comment">// 是否存在写操作，如果存在，</span>
+        <span class="hljs-comment">// 则sl.validate返回false</span>
+        <span class="hljs-keyword">if</span> (!sl.validate(stamp)) &#123;
+            <span class="hljs-comment">// 升级为悲观读锁</span>
+            stamp = sl.readLock();
+            <span class="hljs-keyword">try</span> &#123;
+                curX = x;
+                curY = y;
+            &#125; <span class="hljs-keyword">finally</span> &#123;
+                <span class="hljs-comment">//释放悲观读锁</span>
+                sl.unlockRead(stamp);
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> Math.sqrt(curX * curX + curY * curY);
+    &#125;
+&#125;
+</code></pre>
+<p>注意事项：</p>
+<ol>
+<li>StampedLock不支持重入。</li>
+<li>StampedLock的悲观读锁、写锁不支持条件变量。</li>
+<li>线程阻塞在锁上时，如果调用阻塞线程的 <code>interrupt()</code> 方法，会导致CPU占用飙升。如果需要支持中断功能，一定使用可中断的悲观读锁 <code>readLockInterruptibly()</code> 和写锁 <code>writeLockInterruptibly()</code>。</li>
+</ol>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/1-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  进程与线程
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/2-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98/">
+                Java内存模型解决可见性和有序性问题
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">Delmore</a> 
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

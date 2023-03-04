@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+
+	<!-- title -->
+	
+	<title>
+	
+		单例模式 | 
+	 
+	tech note
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.baidu.com/s?wd=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "blog.technote.tech";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">tech note</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/delmoretree" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-代数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/01-%E7%9F%A9%E9%98%B5/">
+										01-矩阵
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/02-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">
+										02-线性空间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/03-%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84/">
+										03-线性映射
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/04-%E5%A4%9A%E9%A1%B9%E5%BC%8F/">
+										04-多项式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/05-%E7%89%B9%E5%BE%81%E5%80%BC/">
+										05-特征值
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/06-%E7%9B%B8%E4%BC%BC%E6%A0%87%E5%87%86%E5%9E%8B/">
+										06-相似标准型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/07-%E4%BA%8C%E6%AC%A1%E5%9E%8B/">
+										07-二次型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/08-%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4/">
+										08-内积空间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/09-%E7%BE%A4%E8%AE%BA/">
+										09-群论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/10-%E7%8E%AF%E8%AE%BA/">
+										10-环论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/11-%E5%9F%9F%E8%AE%BA/">
+										11-域论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-分析学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/01-%E5%AE%9E%E6%95%B0%E7%B3%BB%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7/">
+										01-实数系的连续性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/02-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/">
+										02-数列极限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/03-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90/">
+										03-函数极限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/04-%E6%97%A0%E7%A9%B7%E5%B0%8F/">
+										04-无穷小
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/05-%E8%BF%9E%E7%BB%AD%E4%B8%8E%E9%97%B4%E6%96%AD/">
+										05-连续与间断
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/06-%E5%AF%BC%E6%95%B0/">
+										06-导数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/07-%E5%BE%AE%E5%88%86/">
+										07-微分
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/08-%E5%BE%AE%E5%88%86%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/">
+										08-微分中值定理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-初等数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/03-%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/%E4%B8%8D%E7%AD%89%E5%BC%8F/">
+										不等式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/03-%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">
+										数理逻辑
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										11-组成原理
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1. 指令
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-1-%E6%8C%87%E4%BB%A4%E6%A6%82%E8%BF%B0/">
+										1-1-指令概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-2-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4/">
+										1-2-算数运算指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-3-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4/">
+										1-3-数据传输指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-4-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4/">
+										1-4-逻辑运算指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-5-%E5%86%B3%E7%AD%96%E6%8C%87%E4%BB%A4/">
+										1-5-决策指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-6-%E8%BF%87%E7%A8%8B%E7%9A%84%E6%89%A7%E8%A1%8C/">
+										1-6-过程的执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/%E9%99%84-MIPS%E6%8C%87%E4%BB%A4/">
+										附-MIPS指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										12-操作系统
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										进程管理
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/1-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+										1-进程与线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/2-%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5/">
+										2-互斥与同步
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/3-%E6%AD%BB%E9%94%81%E4%B8%8E%E9%A5%A5%E9%A5%BF/">
+										3-死锁与饥饿
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										13-数据库
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/">
+										MySQL常见操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/1-MySQL%E7%9A%84%E6%89%A7%E8%A1%8C/">
+										1-MySQL的执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%9A%84%E9%94%81/">
+										MySQL的锁
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E4%BA%8B%E5%8A%A1/">
+										事务
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E7%B4%A2%E5%BC%95/">
+										索引
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Redis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+										数据结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										14-软件工程
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										设计模式
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1.面向对象
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%85%85%E8%A1%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%B4%AB%E8%A1%80%E6%A8%A1%E5%9E%8B/">
+										充血模型和贫血模型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7/">
+										四大特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E8%80%8C%E9%9D%9E%E5%AE%9E%E7%8E%B0%E7%BC%96%E7%A8%8B/">
+										基于接口而非实现编程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/">
+										面向对象与面向过程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2.设计原则
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/DRY%E5%8E%9F%E5%88%99/">
+										DRY原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/KISS%E3%80%81YAGNI%E5%8E%9F%E5%88%99/">
+										KISS、YAGNI原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/LOD%E5%8E%9F%E5%88%99/">
+										LOD原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/SOLID%E5%8E%9F%E5%88%99/">
+										SOLID原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%80%A7/">
+										代码复用性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3.规范与重构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.%E8%A7%84%E8%8C%83%E4%B8%8E%E9%87%8D%E6%9E%84/%E9%87%8D%E6%9E%84/">
+										重构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										4.创建型设计模式
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+										单例模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+										原型模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+										工厂模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
+										建造者模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										5.结构型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/">
+										享元模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
+										代理模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">
+										桥接模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">
+										组合模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										装饰器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										适配器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										6.行为型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F/">
+										中介模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/">
+										模板模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">
+										策略模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/">
+										职责链模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+										观察者模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										迭代器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										15-软件开发
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JAVA
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JAVA/%E5%86%85%E7%9C%81/">
+										内省
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/01-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">
+										01-JVM内存结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/02-%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+										02-自动内存管理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MyBatis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/MyBatis/MyBatis%E7%AE%80%E4%BB%8B/">
+										MyBatis简介
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Spring
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/01-IoC%E5%AE%B9%E5%99%A8/">
+										01-IoC容器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/AOP%EF%BC%88%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%EF%BC%89/">
+										AOP（面向切面编程）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/%E9%85%8D%E7%BD%AE/">
+										配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										并发
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/0-Java%E7%BA%BF%E7%A8%8B/">
+										0-Java线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/1-%E5%B9%B6%E5%8F%91%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98/">
+										1-并发存在的问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/2-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98/">
+										2-Java内存模型解决可见性和有序性问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/3-%E4%BA%92%E6%96%A5%E9%94%81%E8%A7%A3%E5%86%B3%E5%8E%9F%E5%AD%90%E6%80%A7%E9%97%AE%E9%A2%98/">
+										3-互斥锁解决原子性问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/4-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/">
+										4-线程同步
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										16-系统运维
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/CentOS%E4%B8%AD%E7%9A%84RabbitMQ/">
+										CentOS中的RabbitMQ
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/GitLab%E6%8E%92%E9%94%99/">
+										GitLab排错
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/Linux%E6%8C%82%E8%BD%BDWindows%E5%85%B1%E4%BA%AB%E7%9B%98/">
+										Linux挂载Windows共享盘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE/">
+										防火墙设置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	单例模式
+</h1>
+<div class="article-meta">
+	
+	<span>Delmore</span>
+	<span>2020-10-20 11:11:59</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="一个类只允许创建一个对象"><a class="markdownIt-Anchor" href="#一个类只允许创建一个对象"></a> 一个类只允许创建一个对象</h1>
+<p>一个类只允许创建一个对象（或者实例），那这个类就是一个单例类，这种设计模式就叫作<strong>单例模式</strong>（Singleton Design Pattern）。</p>
+<p>单例模式创建的对象是<strong>进程唯一</strong>的。</p>
+<h2 id="创建时考虑安全问题"><a class="markdownIt-Anchor" href="#创建时考虑安全问题"></a> 创建时考虑安全问题</h2>
+<ul>
+<li>构造函数需要是 <code>private</code> 访问权限的，这样才能避免外部通过 <code>new</code> 创建实例；</li>
+<li>考虑对象创建时的线程安全问题；</li>
+</ul>
+<h2 id="使用时考虑性能问题"><a class="markdownIt-Anchor" href="#使用时考虑性能问题"></a> 使用时考虑性能问题</h2>
+<ul>
+<li>
+<p>考虑是否支持延迟加载；</p>
+<blockquote>
+<p>延迟加载：真正使用时，才创建实例</p>
+</blockquote>
+</li>
+<li>
+<p>考虑 <code>getInstance()</code> 性能是否高（是否加锁）。</p>
+</li>
+</ul>
+<h2 id="饿汉式创建方式最简单但不支持延迟加载"><a class="markdownIt-Anchor" href="#饿汉式创建方式最简单但不支持延迟加载"></a> 饿汉式创建方式最简单，但不支持延迟加载</h2>
+<p>在类加载的时候，instance 静态实例就已经创建并初始化好了，所以，instance 实例的创建过程是线程安全的。不过，这样的实现方式不支持延迟加载。</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IdGenerator</span> </span>&#123; 
+  <span class="hljs-keyword">private</span> AtomicLong id = <span class="hljs-keyword">new</span> AtomicLong(<span class="hljs-number">0</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> IdGenerator instance = <span class="hljs-keyword">new</span> IdGenerator();
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">IdGenerator</span><span class="hljs-params">()</span> </span>&#123;&#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IdGenerator <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> instance;
+  &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123; 
+    <span class="hljs-keyword">return</span> id.incrementAndGet();
+  &#125;
+&#125;
+</code></pre>
+<blockquote>
+<ul>
+<li>若初始化耗时长，提前到程序启动的时候完成，这样就能避免在程序运行的时候，再去初始化导致的性能问题。</li>
+<li>若实例占用资源多，有问题及早暴露，在程序启动的时候触发报错，可以立即去修复。避免在程序运行一段时间后，突然因为初始化这个实例占用资源过多，导致系统崩溃，影响系统的可用性。</li>
+</ul>
+</blockquote>
+<h2 id="懒汉式创建方式支持延迟加载但并发度低"><a class="markdownIt-Anchor" href="#懒汉式创建方式支持延迟加载但并发度低"></a> 懒汉式创建方式支持延迟加载，但并发度低</h2>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IdGenerator</span> </span>&#123; 
+  <span class="hljs-keyword">private</span> AtomicLong id = <span class="hljs-keyword">new</span> AtomicLong(<span class="hljs-number">0</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> IdGenerator instance;
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">IdGenerator</span><span class="hljs-params">()</span> </span>&#123;&#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> IdGenerator <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>) &#123;
+      instance = <span class="hljs-keyword">new</span> IdGenerator();
+    &#125;
+    <span class="hljs-keyword">return</span> instance;
+  &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123; 
+    <span class="hljs-keyword">return</span> id.incrementAndGet();
+  &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>如果这个单例类偶尔会被用到，那这种实现方式还可以接受。但是，<strong>如果频繁地用到，那频繁加锁、释放锁及并发度低等问题，会导致性能瓶颈，这种实现方式就不可取了</strong>。</p>
+</blockquote>
+<h2 id="双重检测实现方式既支持延迟加载又支持高并发"><a class="markdownIt-Anchor" href="#双重检测实现方式既支持延迟加载又支持高并发"></a> 双重检测实现方式既支持延迟加载，又支持高并发</h2>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IdGenerator</span> </span>&#123; 
+  <span class="hljs-keyword">private</span> AtomicLong id = <span class="hljs-keyword">new</span> AtomicLong(<span class="hljs-number">0</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> IdGenerator instance;
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">IdGenerator</span><span class="hljs-params">()</span> </span>&#123;&#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IdGenerator <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>) &#123;
+      <span class="hljs-keyword">synchronized</span>(IdGenerator<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>&#123; <span class="hljs-comment">// 此处为类级别的锁</span>
+        <span class="hljs-keyword">if</span> (instance == <span class="hljs-keyword">null</span>) &#123;
+          instance = <span class="hljs-keyword">new</span> IdGenerator();
+        &#125;
+      &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> instance;
+  &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123; 
+    <span class="hljs-keyword">return</span> id.incrementAndGet();
+  &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>只要 instance 被创建之后，即便再调用 <code>getInstance()</code> 函数也不会再进入到加锁逻辑中了。</p>
+</blockquote>
+<h2 id="静态内部类方式类似饿汉式但又能做到了延迟加载"><a class="markdownIt-Anchor" href="#静态内部类方式类似饿汉式但又能做到了延迟加载"></a> 静态内部类方式类似饿汉式，但又能做到了延迟加载</h2>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IdGenerator</span> </span>&#123; 
+  <span class="hljs-keyword">private</span> AtomicLong id = <span class="hljs-keyword">new</span> AtomicLong(<span class="hljs-number">0</span>);
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">IdGenerator</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SingletonHolder</span></span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> IdGenerator instance = <span class="hljs-keyword">new</span> IdGenerator();
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IdGenerator <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> SingletonHolder.instance;
+  &#125;
+ 
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123; 
+    <span class="hljs-keyword">return</span> id.incrementAndGet();
+  &#125;
+&#125;
+</code></pre>
+<p>当外部类 <code>IdGenerator</code> 被加载的时候，并不会创建 <code>SingletonHolder</code> 实例对象。只有当调用 <code>getInstance()</code> 方法时，<code>SingletonHolder</code> 才会被加载，这个时候才会创建 instance。</p>
+<blockquote>
+<p>instance 的唯一性、创建过程的线程安全性，都由 JVM 来保证。所以，这种实现方法既保证了线程安全，又能做到延迟加载。</p>
+</blockquote>
+<h1 id="使用场景处理资源访问冲突"><a class="markdownIt-Anchor" href="#使用场景处理资源访问冲突"></a> 使用场景：处理资源访问冲突</h1>
+<pre class="highlight"><code class="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Logger</span> </span>&#123;
+  <span class="hljs-keyword">private</span> FileWriter writer;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Logger</span><span class="hljs-params">()</span> </span>&#123;
+    File file = <span class="hljs-keyword">new</span> File(<span class="hljs-string">"/Users/wangzheng/log.txt"</span>);
+    writer = <span class="hljs-keyword">new</span> FileWriter(file, <span class="hljs-keyword">true</span>);
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">log</span><span class="hljs-params">(String message)</span> </span>&#123;
+    writer.write(mesasge);
+  &#125;
+&#125;
+</code></pre>
+<h2 id="线程不安全日志信息互相覆盖"><a class="markdownIt-Anchor" href="#线程不安全日志信息互相覆盖"></a> 线程不安全，日志信息互相覆盖</h2>
+<p>在 Web 容器的 Servlet 多线程环境下，如果两个 Servlet 线程同时分别执行 <code>login()</code> 和 <code>create()</code> 两个函数，并且同时写日志到 log.txt 文件中，<br />
+那就有可能存在<strong>日志信息互相覆盖</strong>的情况。</p>
+<p><img src="https://technotetech.oss-cn-shenzhen.aliyuncs.com/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2b0e6141d10399430c59169af4edc3c2.jpg" alt="" /></p>
+<h2 id="加对象锁不能解决"><a class="markdownIt-Anchor" href="#加对象锁不能解决"></a> 加对象锁不能解决</h2>
+<p>通过加对象锁 <code>synchronized(this)</code> 的方式并不能解决：</p>
+<pre class="highlight"><code class="java">...
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">log</span><span class="hljs-params">(String message)</span> </span>&#123;
+    <span class="hljs-keyword">synchronized</span>(<span class="hljs-keyword">this</span>) &#123;
+      writer.write(mesasge);
+    &#125;
+  &#125;
+...
+</code></pre>
+<ul>
+<li>
+<p>不同的对象之间并不共享同一把锁。</p>
+<p>这种锁是一个对象级别的锁，一个对象在不同的线程下同时调用 <code>log()</code> 函数，会被强制要求顺序执行。但是，<strong>不同的对象之间并不共享同一把锁</strong>。在不同的线程下，通过不同的对象调用执行 <code>log()</code> 函数，锁并不会起作用，仍然有可能存在写入日志互相覆盖的问题。</p>
+</li>
+</ul>
+<p><img src="https://technotetech.oss-cn-shenzhen.aliyuncs.com/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/203eb5070c3820b48500d4ab95732f29.jpg" alt="" /></p>
+<ul>
+<li>
+<p><code>FileWriter</code>本身就是线程安全的。</p>
+<p>内部实现中本身就加了对象级别的锁，<strong>不同的 <code>Logger</code> 对象不共享 <code>FileWriter</code> 对象</strong>，所以，<code>FileWriter</code> 对象级别的锁也解决不了数据写入互相覆盖的问题。</p>
+</li>
+</ul>
+<h2 id="单例模式解决线程安全问题"><a class="markdownIt-Anchor" href="#单例模式解决线程安全问题"></a> 单例模式解决线程安全问题</h2>
+<p>只允许创建一个 <code>Logger</code> 对象，所有的线程共享使用的这一个 <code>Logger</code> 对象，共享一个 <code>FileWriter</code> 对象，而 <code>FileWriter</code> 本身是对象级别线程安全的，也就避免了多线程情况下写日志会互相覆盖的问题。</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Logger</span> </span>&#123;
+  <span class="hljs-keyword">private</span> FileWriter writer;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger instance = <span class="hljs-keyword">new</span> Logger();
+
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Logger</span><span class="hljs-params">()</span> </span>&#123;
+    File file = <span class="hljs-keyword">new</span> File(<span class="hljs-string">"/Users/wangzheng/log.txt"</span>);
+    writer = <span class="hljs-keyword">new</span> FileWriter(file, <span class="hljs-keyword">true</span>);
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Logger <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> instance;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">log</span><span class="hljs-params">(String message)</span> </span>&#123;
+    writer.write(mesasge);
+  &#125;
+&#125;
+</code></pre>
+<h2 id="加类级别的锁也能解决"><a class="markdownIt-Anchor" href="#加类级别的锁也能解决"></a> 加类级别的锁也能解决</h2>
+<p>让所有的对象都<strong>共享同一把锁</strong>。这样就避免了不同对象之间同时调用 <code>log()</code> 函数，而导致的日志覆盖问题。</p>
+<pre class="highlight"><code class="java">...
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">log</span><span class="hljs-params">(String message)</span> </span>&#123;
+    <span class="hljs-keyword">synchronized</span>(Logger<span class="hljs-class">.<span class="hljs-keyword">class</span>) </span>&#123;
+      writer.write(mesasge);
+    &#125;
+  &#125;
+...
+</code></pre>
+<h2 id="其他解决方式"><a class="markdownIt-Anchor" href="#其他解决方式"></a> 其他解决方式</h2>
+<ul>
+<li>
+<p>分布式锁</p>
+<p>实现一个安全可靠、无 bug、高性能的分布式锁，并不是件容易的事情。</p>
+</li>
+<li>
+<p>并发队列</p>
+<p>多个线程同时往并发队列里写日志，一个单独的线程负责将并发队列中的数据，写入到日志文件。这种方式实现起来也稍微有点复杂。</p>
+</li>
+</ul>
+<h1 id="使用场景数据在系统中只应保存一份的全局唯一类"><a class="markdownIt-Anchor" href="#使用场景数据在系统中只应保存一份的全局唯一类"></a> 使用场景：数据在系统中只应保存一份的全局唯一类</h1>
+<ul>
+<li>
+<p>配置信息类。</p>
+<p>在系统中，我们只有一个配置文件，当配置文件被加载到内存之后，以对象的形式存在，也理所应当只有一份。</p>
+</li>
+<li>
+<p>唯一递增 ID 号码生成器。</p>
+<p>如果程序中有两个对象，那就会存在生成重复 ID 的情况，所以，我们应该将 ID 生成器类设计为单例。</p>
+</li>
+</ul>
+<h1 id="单例模式问题多也被称为反模式"><a class="markdownIt-Anchor" href="#单例模式问题多也被称为反模式"></a> 单例模式问题多，也被称为反模式</h1>
+<h2 id="单例对-oop-特性的支持不友好"><a class="markdownIt-Anchor" href="#单例对-oop-特性的支持不友好"></a> 单例对 OOP 特性的支持不友好</h2>
+<h3 id="单例违背了抽象特性"><a class="markdownIt-Anchor" href="#单例违背了抽象特性"></a> 单例违背了抽象特性</h3>
+<p><code>IdGenerator.getInstance().getId();</code> 违背了基于接口而非实现的设计原则，也就违背了广义上理解的 OOP 的<strong>抽象特性</strong>。</p>
+<p>如果未来某一天，我们希望针对不同的业务采用不同的 ID 生成算法。<br />
+比如，订单 ID 和用户 ID 采用不同的 ID 生成器来生成。<br />
+为了应对这个需求变化，我们需要修改所有用到 <code>IdGenerator</code> 类的地方，这样代码的改动就会比较大。</p>
+<h3 id="单例对继承-多态特性的支持不友好"><a class="markdownIt-Anchor" href="#单例对继承-多态特性的支持不友好"></a> 单例对继承、多态特性的支持不友好</h3>
+<p>单例类实现继承、多态，会非常奇怪，会导致代码的可读性变差。<br />
+不明白设计意图的人，看到这样的设计，会觉得莫名其妙。<br />
+所以，一旦你选择将某个类设计成到单例类，也就意味着放弃了继承和多态这两个强有力的面向对象特性，也就相当于损失了可以应对未来需求变化的扩展性。</p>
+<h2 id="单例会隐藏类之间的依赖关系"><a class="markdownIt-Anchor" href="#单例会隐藏类之间的依赖关系"></a> 单例会隐藏类之间的依赖关系</h2>
+<p>单例类不需要显示创建、不需要依赖参数传递，在函数中直接调用就可以了。如果代码比较复杂，这种调用关系就会非常隐蔽。<br />
+在阅读代码的时候，我们就需要仔细查看每个函数的代码实现，才能知道这个类到底依赖了哪些单例类。</p>
+<h2 id="单例对代码的扩展性不友好"><a class="markdownIt-Anchor" href="#单例对代码的扩展性不友好"></a> 单例对代码的扩展性不友好</h2>
+<p>我们在系统中创建两个数据库连接池，慢 SQL 独享一个数据库连接池，<br />
+其他 SQL 独享另外一个数据库连接池，这样就能避免慢 SQL 影响到其他 SQL 的执行。</p>
+<p>如果我们将数据库连接池设计成单例类，显然就无法适应这样的需求变更。所以，数据库连接池、线程池这类的资源池，最好还是不要设计成单例类。</p>
+<h2 id="单例对代码的可测试性不友好"><a class="markdownIt-Anchor" href="#单例对代码的可测试性不友好"></a> 单例对代码的可测试性不友好</h2>
+<p>单例模式的使用会影响到代码的可测试性。<br />
+如果单例类依赖比较重的外部资源，比如 DB，我们在写单元测试的时候，希望能通过 mock 的方式将它替换掉。<br />
+而单例类这种硬编码式的使用方式，导致无法实现 mock 替换。</p>
+<p>除此之外，如果单例类持有成员变量（比如 <code>IdGenerator</code> 中的 <code>id</code> 成员变量），<br />
+那它实际上相当于一种全局变量，被所有的代码共享。如果这个全局变量是一个可变全局变量，也就是说，它的成员变量是可以被修改的，<br />
+那我们在编写单元测试的时候，还需要注意不同测试用例之间，修改了单例类中的同一个成员变量的值，从而导致测试结果互相影响的问题。</p>
+<h2 id="单例不支持有参数的构造函数"><a class="markdownIt-Anchor" href="#单例不支持有参数的构造函数"></a> 单例不支持有参数的构造函数</h2>
+<h1 id="单例类在不同范围内其唯一性不同"><a class="markdownIt-Anchor" href="#单例类在不同范围内其唯一性不同"></a> 单例类在不同范围内，其唯一性不同</h1>
+<h2 id="普通的单例类是进程唯一的"><a class="markdownIt-Anchor" href="#普通的单例类是进程唯一的"></a> 普通的单例类是进程唯一的</h2>
+<p>单例类中对象的唯一性的作用范围是进程内的，在进程间是不唯一的。</p>
+<h2 id="线程唯一的单例类"><a class="markdownIt-Anchor" href="#线程唯一的单例类"></a> 线程唯一的单例类</h2>
+<p>通过一个 <code>HashMap</code> 来存储对象，其中 <code>key</code> 是线程 ID，<code>value</code> 是对象。这样我们就可以做到，<strong>不同的线程对应不同的对象，同一个线程只能对应一个对象</strong>。</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IdGenerator</span> </span>&#123;
+  <span class="hljs-keyword">private</span> AtomicLong id = <span class="hljs-keyword">new</span> AtomicLong(<span class="hljs-number">0</span>);
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> ConcurrentHashMap&lt;Long, IdGenerator&gt; instances = <span class="hljs-keyword">new</span> ConcurrentHashMap&lt;&gt;();
+
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">IdGenerator</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IdGenerator <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;
+    Long currentThreadId = Thread.currentThread().getId();
+    instances.putIfAbsent(currentThreadId, <span class="hljs-keyword">new</span> IdGenerator());
+    <span class="hljs-keyword">return</span> instances.get(currentThreadId);
+  &#125;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> id.incrementAndGet();
+  &#125;
+&#125;
+</code></pre>
+<h2 id="分布式集群环境下的单例"><a class="markdownIt-Anchor" href="#分布式集群环境下的单例"></a> 分布式集群环境下的单例</h2>
+<p><strong>集群唯一</strong>就相当于是进程内唯一、进程间也唯一。不同的进程间共享同一个对象，不能创建同一个类的多个对象。</p>
+<p>需要把这个单例对象序列化并存储到外部共享存储区（比如文件）。<br />
+进程在使用这个单例对象的时候，需要先从外部共享存储区中将它读取到内存，并反序列化成对象，然后再使用，使用完成之后还需要再存储回外部共享存储区。</p>
+<blockquote>
+<p>为了保证任何时刻，在进程间都只有一份对象存在，一个进程在获取到对象之后，需要对对象加锁，避免其他进程再将其获取。在进程使用完这个对象之后，还需要显式地将对象从内存中删除，并且释放对对象的加锁。</p>
+</blockquote>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IdGenerator</span> </span>&#123;
+  <span class="hljs-keyword">private</span> AtomicLong id = <span class="hljs-keyword">new</span> AtomicLong(<span class="hljs-number">0</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> IdGenerator instance;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> SharedObjectStorage storage = FileSharedObjectStorage(<span class="hljs-comment">/*入参省略，比如文件地址*/</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> DistributedLock lock = <span class="hljs-keyword">new</span> DistributedLock();
+  
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">IdGenerator</span><span class="hljs-params">()</span> </span>&#123;&#125;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">static</span> IdGenerator <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> 
+    <span class="hljs-title">if</span> <span class="hljs-params">(instance == <span class="hljs-keyword">null</span>)</span> </span>&#123;
+      lock.lock();
+      instance = storage.load(IdGenerator<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> instance;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> synchroinzed <span class="hljs-keyword">void</span> <span class="hljs-title">freeInstance</span><span class="hljs-params">()</span> </span>&#123;
+    storage.save(<span class="hljs-keyword">this</span>, IdGeneator<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;
+    instance = <span class="hljs-keyword">null</span>; <span class="hljs-comment">//释放对象</span>
+    lock.unlock();
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123; 
+    <span class="hljs-keyword">return</span> id.incrementAndGet();
+  &#125;
+&#125;
+
+<span class="hljs-comment">// IdGenerator使用举例</span>
+IdGenerator idGeneator = IdGenerator.getInstance();
+<span class="hljs-keyword">long</span> id = idGenerator.getId();
+IdGenerator.freeInstance();
+</code></pre>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  防火墙设置
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/01-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">
+                JVM内存结构
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">Delmore</a> 
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

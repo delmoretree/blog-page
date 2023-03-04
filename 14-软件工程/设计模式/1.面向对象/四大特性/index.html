@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+
+	<!-- title -->
+	
+	<title>
+	
+		四大特性 | 
+	 
+	tech note
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.baidu.com/s?wd=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "blog.technote.tech";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/" class="logo">tech note</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/delmoretree" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-代数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/01-%E7%9F%A9%E9%98%B5/">
+										01-矩阵
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/02-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">
+										02-线性空间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/03-%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84/">
+										03-线性映射
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/04-%E5%A4%9A%E9%A1%B9%E5%BC%8F/">
+										04-多项式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/05-%E7%89%B9%E5%BE%81%E5%80%BC/">
+										05-特征值
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/06-%E7%9B%B8%E4%BC%BC%E6%A0%87%E5%87%86%E5%9E%8B/">
+										06-相似标准型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/07-%E4%BA%8C%E6%AC%A1%E5%9E%8B/">
+										07-二次型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/08-%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4/">
+										08-内积空间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/09-%E7%BE%A4%E8%AE%BA/">
+										09-群论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/10-%E7%8E%AF%E8%AE%BA/">
+										10-环论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/11-%E5%9F%9F%E8%AE%BA/">
+										11-域论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-分析学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/01-%E5%AE%9E%E6%95%B0%E7%B3%BB%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7/">
+										01-实数系的连续性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/02-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/">
+										02-数列极限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/03-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90/">
+										03-函数极限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/04-%E6%97%A0%E7%A9%B7%E5%B0%8F/">
+										04-无穷小
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/05-%E8%BF%9E%E7%BB%AD%E4%B8%8E%E9%97%B4%E6%96%AD/">
+										05-连续与间断
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/06-%E5%AF%BC%E6%95%B0/">
+										06-导数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/07-%E5%BE%AE%E5%88%86/">
+										07-微分
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/08-%E5%BE%AE%E5%88%86%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/">
+										08-微分中值定理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-初等数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/03-%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/%E4%B8%8D%E7%AD%89%E5%BC%8F/">
+										不等式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/03-%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">
+										数理逻辑
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										11-组成原理
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1. 指令
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-1-%E6%8C%87%E4%BB%A4%E6%A6%82%E8%BF%B0/">
+										1-1-指令概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-2-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4/">
+										1-2-算数运算指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-3-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4/">
+										1-3-数据传输指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-4-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4/">
+										1-4-逻辑运算指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-5-%E5%86%B3%E7%AD%96%E6%8C%87%E4%BB%A4/">
+										1-5-决策指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-6-%E8%BF%87%E7%A8%8B%E7%9A%84%E6%89%A7%E8%A1%8C/">
+										1-6-过程的执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/%E9%99%84-MIPS%E6%8C%87%E4%BB%A4/">
+										附-MIPS指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										12-操作系统
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										进程管理
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/1-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+										1-进程与线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/2-%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5/">
+										2-互斥与同步
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/3-%E6%AD%BB%E9%94%81%E4%B8%8E%E9%A5%A5%E9%A5%BF/">
+										3-死锁与饥饿
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										13-数据库
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/">
+										MySQL常见操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/1-MySQL%E7%9A%84%E6%89%A7%E8%A1%8C/">
+										1-MySQL的执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%9A%84%E9%94%81/">
+										MySQL的锁
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E4%BA%8B%E5%8A%A1/">
+										事务
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E7%B4%A2%E5%BC%95/">
+										索引
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Redis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+										数据结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										14-软件工程
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										设计模式
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1.面向对象
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%85%85%E8%A1%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%B4%AB%E8%A1%80%E6%A8%A1%E5%9E%8B/">
+										充血模型和贫血模型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7/">
+										四大特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E8%80%8C%E9%9D%9E%E5%AE%9E%E7%8E%B0%E7%BC%96%E7%A8%8B/">
+										基于接口而非实现编程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/">
+										面向对象与面向过程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2.设计原则
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/DRY%E5%8E%9F%E5%88%99/">
+										DRY原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/KISS%E3%80%81YAGNI%E5%8E%9F%E5%88%99/">
+										KISS、YAGNI原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/LOD%E5%8E%9F%E5%88%99/">
+										LOD原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/SOLID%E5%8E%9F%E5%88%99/">
+										SOLID原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%80%A7/">
+										代码复用性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3.规范与重构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.%E8%A7%84%E8%8C%83%E4%B8%8E%E9%87%8D%E6%9E%84/%E9%87%8D%E6%9E%84/">
+										重构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										4.创建型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+										单例模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+										原型模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+										工厂模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
+										建造者模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										5.结构型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/">
+										享元模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
+										代理模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">
+										桥接模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">
+										组合模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										装饰器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										适配器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										6.行为型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F/">
+										中介模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/">
+										模板模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">
+										策略模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/">
+										职责链模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+										观察者模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										迭代器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										15-软件开发
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JAVA
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JAVA/%E5%86%85%E7%9C%81/">
+										内省
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/01-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">
+										01-JVM内存结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/02-%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+										02-自动内存管理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MyBatis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/MyBatis/MyBatis%E7%AE%80%E4%BB%8B/">
+										MyBatis简介
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Spring
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/01-IoC%E5%AE%B9%E5%99%A8/">
+										01-IoC容器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/AOP%EF%BC%88%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%EF%BC%89/">
+										AOP（面向切面编程）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/%E9%85%8D%E7%BD%AE/">
+										配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										并发
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/0-Java%E7%BA%BF%E7%A8%8B/">
+										0-Java线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/1-%E5%B9%B6%E5%8F%91%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98/">
+										1-并发存在的问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/2-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98/">
+										2-Java内存模型解决可见性和有序性问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/3-%E4%BA%92%E6%96%A5%E9%94%81%E8%A7%A3%E5%86%B3%E5%8E%9F%E5%AD%90%E6%80%A7%E9%97%AE%E9%A2%98/">
+										3-互斥锁解决原子性问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/4-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/">
+										4-线程同步
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										16-系统运维
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/CentOS%E4%B8%AD%E7%9A%84RabbitMQ/">
+										CentOS中的RabbitMQ
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/GitLab%E6%8E%92%E9%94%99/">
+										GitLab排错
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/Linux%E6%8C%82%E8%BD%BDWindows%E5%85%B1%E4%BA%AB%E7%9B%98/">
+										Linux挂载Windows共享盘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE/">
+										防火墙设置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	四大特性
+</h1>
+<div class="article-meta">
+	
+	<span>Delmore</span>
+	<span>2020-09-27 16:58:46</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<h1 id="封装"><a class="markdownIt-Anchor" href="#封装"></a> 封装</h1>
+<h2 id="概念"><a class="markdownIt-Anchor" href="#概念"></a> 概念</h2>
+<p><code>封装（Encapsulation）</code> 也叫作信息隐藏或者数据访问保护。类通过暴露有限的访问接口，授权外部仅能通过类提供的方式（或者叫函数）来访问内部信息或者数据。</p>
+<h2 id="目的"><a class="markdownIt-Anchor" href="#目的"></a> 目的</h2>
+<h3 id="预防不可控"><a class="markdownIt-Anchor" href="#预防不可控"></a> 预防不可控</h3>
+<p>对类中属性的访问不做限制，属性可以随意被以各种奇葩的方式修改，而且修改逻辑可能散落在代码中的各个角落，势必影响代码的可读性、可维护性。</p>
+<h3 id="提高易用性"><a class="markdownIt-Anchor" href="#提高易用性"></a> 提高易用性</h3>
+<p>如果我们把类属性都暴露给类的调用者，调用者想要正确地操作这些属性，就势必要对业务细节有足够的了解。相反，如果我们将属性封装起来，暴露少许的几个必要的方法给调用者使用，调用者就不需要了解太多背后的业务细节，用错的概率就减少很多。</p>
+<h2 id="实现"><a class="markdownIt-Anchor" href="#实现"></a> 实现</h2>
+<p>通过语言本身的访问 <code>权限控制</code> 这一语法机制支持封装</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wallet</span> </span>&#123;
+  <span class="hljs-keyword">private</span> String id;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> createTime;
+  <span class="hljs-keyword">private</span> BigDecimal balance;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> balanceLastModifiedTime;
+  <span class="hljs-comment">// ...省略其他属性...</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Wallet</span><span class="hljs-params">()</span> </span>&#123;
+     <span class="hljs-keyword">this</span>.id = IdGenerator.getInstance().generate();
+     <span class="hljs-keyword">this</span>.createTime = System.currentTimeMillis();
+     <span class="hljs-keyword">this</span>.balance = BigDecimal.ZERO;
+     <span class="hljs-keyword">this</span>.balanceLastModifiedTime = System.currentTimeMillis();
+  &#125;
+
+  <span class="hljs-comment">// 注意：下面对get方法做了代码折叠，是为了减少代码所占文章的篇幅</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.id; &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getCreateTime</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.createTime; &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> BigDecimal <span class="hljs-title">getBalance</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.balance; &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getBalanceLastModifiedTime</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.balanceLastModifiedTime;  &#125;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">increaseBalance</span><span class="hljs-params">(BigDecimal increasedAmount)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (increasedAmount.compareTo(BigDecimal.ZERO) &lt; <span class="hljs-number">0</span>) &#123;
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidAmountException(<span class="hljs-string">"..."</span>);
+    &#125;
+    <span class="hljs-keyword">this</span>.balance.add(increasedAmount);
+    <span class="hljs-keyword">this</span>.balanceLastModifiedTime = System.currentTimeMillis();
+  &#125;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">decreaseBalance</span><span class="hljs-params">(BigDecimal decreasedAmount)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (decreasedAmount.compareTo(BigDecimal.ZERO) &lt; <span class="hljs-number">0</span>) &#123;
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidAmountException(<span class="hljs-string">"..."</span>);
+    &#125;
+    <span class="hljs-keyword">if</span> (decreasedAmount.compareTo(<span class="hljs-keyword">this</span>.balance) &gt; <span class="hljs-number">0</span>) &#123;
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InsufficientAmountException(<span class="hljs-string">"..."</span>);
+    &#125;
+    <span class="hljs-keyword">this</span>.balance.subtract(decreasedAmount);
+    <span class="hljs-keyword">this</span>.balanceLastModifiedTime = System.currentTimeMillis();
+  &#125;
+&#125;
+
+</code></pre>
+<ul>
+<li>从业务的角度来说，<code>id</code>、<code>createTime</code> 在创建钱包的时候就确定好了，之后不应该再被改动，所以并没有暴露修改方法。</li>
+<li>对于钱包余额 <code>balance</code> 这个属性，从业务的角度来说，只能增或者减，不会被重新设置。所以只暴露了 <code>increaseBalance()</code> 和 <code>decreaseBalance()</code> 方法，并没有暴露 <code>set</code> 方法。</li>
+<li>对于 <code>balanceLastModifiedTime</code> 这个属性，只有在 <code>balance</code> 修改的时候，这个属性才会被修改。所以，修改操作完全封装在了 <code>increaseBalance()</code> 和 <code>decreaseBalance()</code> 两个方法中。这样也可以保证 <code>balance</code> 和 <code>balanceLastModifiedTime</code> 两个数据的一致性。</li>
+</ul>
+<h1 id="抽象"><a class="markdownIt-Anchor" href="#抽象"></a> 抽象</h1>
+<h2 id="概念-2"><a class="markdownIt-Anchor" href="#概念-2"></a> 概念</h2>
+<p><code>抽象（Abstraction）</code> 是指：隐藏方法的具体实现，让调用者只需要关心方法提供了哪些功能，并不需要知道这些功能是如何实现的。</p>
+<h2 id="目的-2"><a class="markdownIt-Anchor" href="#目的-2"></a> 目的</h2>
+<h3 id="忽略细节"><a class="markdownIt-Anchor" href="#忽略细节"></a> 忽略细节</h3>
+<p>在面对复杂系统的时候，人脑能承受的信息复杂程度是有限的，所以我们必须忽略掉一些非关键性的实现细节。而抽象作为一种只关注功能点不关注实现的设计思路，正好帮我们的大脑过滤掉许多非必要的信息。</p>
+<h3 id="变实现不变定义"><a class="markdownIt-Anchor" href="#变实现不变定义"></a> 变实现不变定义</h3>
+<p>修改方法实现逻辑时不用修改定义，对调用者友好。</p>
+<h2 id="实现-2"><a class="markdownIt-Anchor" href="#实现-2"></a> 实现</h2>
+<p>借助编程语言提供的 <code>接口类</code>（比如 Java 中的 interface 关键字语法）或者 <code>抽象类</code>（比如 Java 中的 abstract 关键字语法）这两种语法机制，来实现抽象这一特性。</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IPictureStorage</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">savePicture</span><span class="hljs-params">(Picture picture)</span></span>;
+  <span class="hljs-function">Image <span class="hljs-title">getPicture</span><span class="hljs-params">(String pictureId)</span></span>;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deletePicture</span><span class="hljs-params">(String pictureId)</span></span>;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">modifyMetaInfo</span><span class="hljs-params">(String pictureId, PictureMetaInfo metaInfo)</span></span>;
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PictureStorage</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IPictureStorage</span> </span>&#123;
+  <span class="hljs-comment">// ...省略其他属性...</span>
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">savePicture</span><span class="hljs-params">(Picture picture)</span> </span>&#123;  &#125;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Image <span class="hljs-title">getPicture</span><span class="hljs-params">(String pictureId)</span> </span>&#123;  &#125;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deletePicture</span><span class="hljs-params">(String pictureId)</span> </span>&#123;  &#125;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">modifyMetaInfo</span><span class="hljs-params">(String pictureId, PictureMetaInfo metaInfo)</span> </span>&#123;  &#125;
+&#125;
+
+</code></pre>
+<ul>
+<li>并不是说一定要为实现类 <code>PictureStorage</code> 抽象出接口类 <code>IPictureStorage</code> ，才叫作抽象。即便不编写 <code>IPictureStorage</code> 接口类，单纯的 <code>PictureStorage</code> 类本身就满足抽象特性。类的方法是通过编程语言中的 <code>函数</code> 这一语法机制来实现的。通过函数包裹具体的实现逻辑，这本身就是一种抽象。调用者在使用函数的时候，并不需要去研究函数内部的实现逻辑，只需要通过函数的命名、注释或者文档，了解其提供了什么功能，就可以直接使用了。比如，我们在使用 C 语言的 <code>malloc()</code> 函数的时候，并不需要了解它的底层代码是怎么实现的。</li>
+<li>不要在方法定义中，暴露太多的实现细节，以保证在某个时间点需要改变方法的实现逻辑的时候，不用去修改其定义。举个简单例子，比如 <code>getAliyunPictureUrl()</code> 就不是一个具有抽象思维的命名，因为某一天如果我们不再把图片存储在阿里云上，而是存储在私有云上，那这个命名也要随之被修改。相反，如果我们定义一个比较抽象的函数，比如叫作 <code>getPictureUrl()</code> ，那即便内部存储方式修改了，我们也不需要修改命名。</li>
+</ul>
+<h1 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h1>
+<h2 id="概念-3"><a class="markdownIt-Anchor" href="#概念-3"></a> 概念</h2>
+<p><code>继承（Inheritance）</code> 用于表示类之间的 <code>is-a</code> 关系。</p>
+<h2 id="目的-3"><a class="markdownIt-Anchor" href="#目的-3"></a> 目的</h2>
+<h3 id="代码复用"><a class="markdownIt-Anchor" href="#代码复用"></a> 代码复用</h3>
+<p>将相同的属性和方法，抽取到父类中，子类就可以重用父类中的代码，避免代码重复写多遍。不过，也可以通过组合关系来解决这个代码复用的问题。</p>
+<h3 id="反应关系"><a class="markdownIt-Anchor" href="#反应关系"></a> 反应关系</h3>
+<p>通过继承来关联两个类，反应真实世界中的 <code>is-a</code> 关系，非常符合人类的认知，而且，从设计的角度来说，也有一种结构美感。</p>
+<h2 id="弊端"><a class="markdownIt-Anchor" href="#弊端"></a> 弊端</h2>
+<p>过度使用继承，继承层次过深过复杂，就会导致代码可读性、可维护性变差。</p>
+<ul>
+<li>为了了解一个类的功能，我们不仅需要查看这个类的代码，还需要按照继承关系一层一层地往上查看“父类、父类的父类……”的代码。</li>
+<li>子类和父类高度耦合，修改父类的代码，会直接影响到子类。</li>
+</ul>
+<h2 id="实现-3"><a class="markdownIt-Anchor" href="#实现-3"></a> 实现</h2>
+<p>为了实现继承这个特性，编程语言需要提供特殊的语法机制来支持，比如 Java 使用 <code>extends</code> 关键字来实现继承。有些编程语言只支持单继承，不支持多重继承，而有些编程语言既支持单重继承，也支持多重继承。</p>
+<h2 id="组合优于继承"><a class="markdownIt-Anchor" href="#组合优于继承"></a> 组合优于继承</h2>
+<p>利用 <code>组合（composition）</code>、<code>接口</code> 、<code>委托（delegation）</code> 三个技术手段，一块儿来解决继承存在的问题。</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Flyable</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fly</span><span class="hljs-params">()</span></span>;
+&#125;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Tweetable</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tweet</span><span class="hljs-params">()</span></span>;
+&#125;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">EggLayable</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">layEgg</span><span class="hljs-params">()</span></span>;
+&#125;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlyAbility</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Flyable</span> </span>&#123;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fly</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-comment">//... &#125;</span>
+&#125;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TweetAbility</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Tweetable</span> </span>&#123;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">tweet</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-comment">//... &#125;</span>
+&#125;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EggLayAbility</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">EggLayable</span> </span>&#123;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">layEgg</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-comment">//... &#125;</span>
+&#125;
+
+<span class="hljs-comment">// 鸵鸟不会飞，不用实现飞行接口</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ostrich</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Tweetable</span>, <span class="hljs-title">EggLayable</span> </span>&#123;
+  <span class="hljs-keyword">private</span> TweetAbility tweetAbility = <span class="hljs-keyword">new</span> TweetAbility(); <span class="hljs-comment">//组合</span>
+  <span class="hljs-keyword">private</span> EggLayAbility eggLayAbility = <span class="hljs-keyword">new</span> EggLayAbility(); <span class="hljs-comment">//组合</span>
+  <span class="hljs-comment">//... 省略其他属性和方法...</span>
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">tweet</span><span class="hljs-params">()</span> </span>&#123;
+    tweetAbility.tweet(); <span class="hljs-comment">// 委托</span>
+  &#125;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">layEgg</span><span class="hljs-params">()</span> </span>&#123;
+    eggLayAbility.layEgg(); <span class="hljs-comment">// 委托</span>
+  &#125;
+&#125;
+</code></pre>
+<h2 id="组合-or-继承"><a class="markdownIt-Anchor" href="#组合-or-继承"></a> 组合 or 继承</h2>
+<p><strong>简单用继承，复杂用组合。</strong> 如果类之间的继承结构稳定（不会轻易改变），继承层次比较浅（比如，最多有两层继承关系），继承关系不复杂，我们就可以大胆地使用继承。反之，系统越不稳定，继承层次很深，继承关系复杂，我们就尽量使用组合来替代继承。<br />
+<strong>无继承关系用组合。</strong> 需要代码复用，又不具有继承关系，使用组合就更加合理、更加灵活<br />
+<strong>需要多态特性用继承。</strong> 如果不能改变一个函数的入参类型，而入参又非接口，为了支持多态，只能采用继承来实现</p>
+<h1 id="多态"><a class="markdownIt-Anchor" href="#多态"></a> 多态</h1>
+<h2 id="概念-4"><a class="markdownIt-Anchor" href="#概念-4"></a> 概念</h2>
+<p><code>多态（Polymorphism）</code> 是指，定义中的父类参数，在调用时传入子类，则在实际的代码运行过程中，运行子类的方法实现。</p>
+<h2 id="目的-4"><a class="markdownIt-Anchor" href="#目的-4"></a> 目的</h2>
+<h3 id="性能提高代码的可扩展性和复用性"><a class="markdownIt-Anchor" href="#性能提高代码的可扩展性和复用性"></a> 性能提高代码的可扩展性和复用性</h3>
+<p>利用多态的特性，可以通过一个方法，实现操作不同类型的数据。新增类型的时候，只需要创建对应的子类，不用修改操作方法。</p>
+<h3 id="多个设计模式的实现基础"><a class="markdownIt-Anchor" href="#多个设计模式的实现基础"></a> 多个设计模式的实现基础</h3>
+<p>很多设计模式、设计原则、编程技巧都需要用到多态特性，比如策略模式、基于接口而非实现编程、依赖倒置原则、里式替换原则、利用多态去掉冗长的 if-else 语句等等。</p>
+<h2 id="实现-4"><a class="markdownIt-Anchor" href="#实现-4"></a> 实现</h2>
+<h3 id="继承重写"><a class="markdownIt-Anchor" href="#继承重写"></a> 继承重写</h3>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DynamicArray</span> </span>&#123;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> DEFAULT_CAPACITY = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> size = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> capacity = DEFAULT_CAPACITY;
+  <span class="hljs-keyword">protected</span> Integer[] elements = <span class="hljs-keyword">new</span> Integer[DEFAULT_CAPACITY];
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.size; &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123; <span class="hljs-keyword">return</span> elements[index];&#125;
+  <span class="hljs-comment">//...省略n多方法...</span>
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(Integer e)</span> </span>&#123;
+    ensureCapacity();
+    elements[size++] = e;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ensureCapacity</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">//...如果数组满了就扩容...代码省略...</span>
+  &#125;
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SortedDynamicArray</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DynamicArray</span> </span>&#123;
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(Integer e)</span> </span>&#123;
+    ensureCapacity();
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">for</span> (i = size-<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span>; --i) &#123; <span class="hljs-comment">//保证数组中的数据有序</span>
+      <span class="hljs-keyword">if</span> (elements[i] &gt; e) &#123;
+        elements[i+<span class="hljs-number">1</span>] = elements[i];
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">break</span>;
+      &#125;
+    &#125;
+    elements[i+<span class="hljs-number">1</span>] = e;
+    ++size;
+  &#125;
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(DynamicArray dynamicArray)</span> </span>&#123;
+    dynamicArray.add(<span class="hljs-number">5</span>);
+    dynamicArray.add(<span class="hljs-number">1</span>);
+    dynamicArray.add(<span class="hljs-number">3</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; dynamicArray.size(); ++i) &#123;
+      System.out.println(dynamicArray.get(i));
+    &#125;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span> </span>&#123;
+    DynamicArray dynamicArray = <span class="hljs-keyword">new</span> SortedDynamicArray();
+    test(dynamicArray); <span class="hljs-comment">// 打印结果：1、3、5</span>
+  &#125;
+&#125;
+</code></pre>
+<blockquote>
+<p>子类 <code>SortedDyamicArray</code> 替换父类 <code>DynamicArray</code> ，执行子类 <code>SortedDyamicArray</code> 的 <code>add()</code> 方法，也就是实现了多态特性。</p>
+</blockquote>
+<h3 id="利用接口类"><a class="markdownIt-Anchor" href="#利用接口类"></a> 利用接口类</h3>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterator</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span></span>;
+  <span class="hljs-function">String <span class="hljs-title">next</span><span class="hljs-params">()</span></span>;
+  <span class="hljs-function">String <span class="hljs-title">remove</span><span class="hljs-params">()</span></span>;
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Array</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span> </span>&#123;
+  <span class="hljs-keyword">private</span> String[] data;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123; ... &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123; ... &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123; ... &#125;
+  <span class="hljs-comment">//...省略其他方法...</span>
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinkedList</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span> </span>&#123;
+  <span class="hljs-keyword">private</span> LinkedListNode head;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123;  &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;  &#125;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123;  &#125;
+  <span class="hljs-comment">//...省略其他方法... </span>
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> </span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(Iterator iterator)</span> </span>&#123;
+    <span class="hljs-keyword">while</span> (iterator.hasNext()) &#123;
+      System.out.println(iterator.next());
+    &#125;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+    Iterator arrayIterator = <span class="hljs-keyword">new</span> Array();
+    print(arrayIterator);
+    
+    Iterator linkedListIterator = <span class="hljs-keyword">new</span> LinkedList();
+    print(linkedListIterator);
+  &#125;
+&#125;
+</code></pre>
+<blockquote>
+<ul>
+<li><code>Iterator</code> 是一个接口类，定义了一个可以遍历集合数据的迭代器。</li>
+<li><code>Array</code> 和 <code>LinkedList</code> 都实现了接口类 <code>Iterator</code>。</li>
+<li>通过传递不同类型的实现类（<code>Array</code>、<code>LinkedList</code>）到 <code>print(Iterator iterator)</code> 函数中，支持动态的调用不同的 <code>next()</code>、<code>hasNext()</code> 实现。</li>
+</ul>
+</blockquote>
+<h3 id="duck-typing-方式"><a class="markdownIt-Anchor" href="#duck-typing-方式"></a> duck-typing 方式</h3>
+<pre class="highlight"><code class="python">
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Logger</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">record</span><span class="hljs-params">(self)</span>:</span>
+        print(“I write a log into file.”)
+        
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DB</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">record</span><span class="hljs-params">(self)</span>:</span>
+        print(“I insert data into db. ”)
+        
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span><span class="hljs-params">(recorder)</span>:</span>
+    recorder.record()
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">demo</span><span class="hljs-params">()</span>:</span>
+    logger = Logger()
+    db = DB()
+    test(logger)
+    test(db)
+</code></pre>
+<blockquote>
+<ul>
+<li>duck-typing 实现多态的方式非常灵活</li>
+<li>既不是继承关系，也不是接口和实现的关系的类，但是只要它们都有定义了 <code>record()</code> 方法，就可以被传递到 <code>test()</code> 方法中，在实际运行的时候，执行对应的 <code>record()</code> 方法。</li>
+<li><code>duck-typing</code>，是一些动态语言所特有的语法机制。</li>
+</ul>
+</blockquote>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  面向对象与面向过程
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/03-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90/">
+                函数极限
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">Delmore</a> 
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
