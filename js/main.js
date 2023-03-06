@@ -37,23 +37,14 @@ function scrollToTop() {
 
 // 侧面目录
 function switchTreeOrIndex() {
-  $('#sidebar-toggle').on('click', function () {
+  $('.side-btn').on('click', function () {
     if ($('#sidebar').hasClass('on')) {
       scrollOff();
     } else {
       scrollOn();
     }
   });
-  $('body').click(function (e) {
-    if (window.matchMedia("(max-width: 1100px)").matches) {
-      var target = $(e.target);
-      if (!target.is('#sidebar *')) {
-        if ($('#sidebar').hasClass('on')) {
-          scrollOff();
-        }
-      }
-    }
-  });
+
   if (window.matchMedia("(min-width: 1100px)").matches) {
     scrollOn();
   } else {
@@ -307,10 +298,13 @@ function scrollOn() {
       $content = $('#content'),
       $header = $('#header'),
       $footer = $('#footer'),
-      $togglei = $('#sidebar-toggle i');
+      $togglei2 = $('#site-toc .side-btn');
+      $togglei1 = $('#header .side-btn');
 
-  $togglei.addClass('fa-close');
-  $togglei.removeClass('fa-arrow-right');
+  $togglei1.addClass('fa-close');
+  $togglei1.removeClass('fa-open');
+  $togglei2.addClass('fa-open');
+  $togglei2.removeClass('fa-close');
   $sidebar.addClass('on');
   $sidebar.removeClass('off');
 
@@ -329,10 +323,14 @@ function scrollOff() {
       $content = $('#content'),
       $header = $('#header'),
       $footer = $('#footer'),
-      $togglei = $('#sidebar-toggle i');
 
-  $togglei.addClass('fa-arrow-right');
-  $togglei.removeClass('fa-close');
+    $togglei2 = $('#site-toc .side-btn');
+    $togglei1 = $('#header .side-btn');
+
+    $togglei1.addClass('fa-open');
+    $togglei1.removeClass('fa-close');
+    $togglei2.addClass('fa-close');
+    $togglei2.removeClass('fa-open');
   $sidebar.addClass('off');
   $sidebar.removeClass('on');
 

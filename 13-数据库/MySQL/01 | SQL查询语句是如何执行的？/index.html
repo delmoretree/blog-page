@@ -9,6 +9,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		01 | SQL查询语句是如何执行的？ | 
 	 
 	tech note
 	</title>
@@ -500,7 +502,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/01%20%7C%20SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E7%9A%84%EF%BC%9F/">
 										01 | SQL查询语句是如何执行的？
 									</a>
@@ -1139,237 +1141,36 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
-	
-		<div class="index-li">
-			<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/11-%E5%9F%9F%E8%AE%BA/">
-				<h2 class="index-title">
-					11-域论
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-11-13</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/03-%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84/">
-				<h2 class="index-title">
-					3-线性映射
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-11-13</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/07-%E5%BE%AE%E5%88%86/">
-				<h2 class="index-title">
-					2-2-微分
-				</h2>
-				<div class="index-brief">
-					当一个函数的自变量有微小的改变时，它的因变量一般来说也会有一个相应的改变。微分的原始思想在于寻找一种方法，当因变量的改变也是很小的时候，能够渐变而又比较精确地估计出这个改变量。
- 引例
-（微分是线性近似）
+		<h1 id="article-title">
+	01 | SQL查询语句是如何执行的？
+</h1>
 
-设正方形的边长为 xxx ，当其边长增加 Δx\Delta xΔx 时，其面积 SSS 增加
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-07-01</span>
-                    
-                            
-                    
-                </div>
-		</div>	
+<div id="article-content">
 	
-		<div class="index-li">
-			<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/0-Java%E7%BA%BF%E7%A8%8B/">
-				<h2 class="index-title">
-					Java线程
-				</h2>
-				<div class="index-brief">
-					 线程的创建和执行
- 创建线程
-
-通过继承 Thread 类并重写 run() 方法创建新线程。
-
-class NewThread extends Thread &#123;
-
-    @Override
-    public void run() &#123;
-        // 线程运行的业务
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-03-14</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E7%B4%A2%E5%BC%95/">
-				<h2 class="index-title">
-					索引
-				</h2>
-				<div class="index-brief">
-					索引是为了更快的查询数据。
- 索引常见的模型
- 哈希表
-哈希表是一个数组，通过哈希算法，将Key计算出数组中的一个确定的位置，再把Value放进数组中。
-如果哈希冲突，则多个Value存在一个链表中。由于哈希表不是有序的，做区间查询，必须全部扫描一遍。
-因此哈希表存储的索引，只适合等值查询。
- 有序
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-04-21</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%9A%84%E9%94%81/">
-				<h2 class="index-title">
-					MySQL的锁
-				</h2>
-				<div class="index-brief">
-					在并发访问时，MySQL采用锁的机制来控制资源的访问规则。
- 全局锁
-全局锁是对整个数据库实例加锁，会让整个库处于只读状态。
-flush table with read lock
-
-全局锁常用在全库逻辑备份的时候。如果在备份的过程中，没有对数据库加锁，那么将导致备份得到的库，不是一个逻辑时间点。
-
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-04-26</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E4%BA%8B%E5%8A%A1/">
-				<h2 class="index-title">
-					事务
-				</h2>
-				<div class="index-brief">
-					 事务隔离级别
-对于多个事务同时执行更改和查询操作时，设置隔离级别，可以微调性能与结果的可靠性、一致性和可复现性之间的平衡关系。
-
-通过 transaction-isolation 参数，可更改默认级别。
-
-如下是按时间顺序执行的两个事务的行为，在不同的隔离级别下，值 V1 、 V2 和 V3 是不
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-04-21</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/3-%E4%BA%92%E6%96%A5%E9%94%81%E8%A7%A3%E5%86%B3%E5%8E%9F%E5%AD%90%E6%80%A7%E9%97%AE%E9%A2%98/">
-				<h2 class="index-title">
-					互斥锁解决原子性问题
-				</h2>
-				<div class="index-brief">
-					在多核架构的系统下，可能同时有多个程序正在被执行，如果不加限制的访问共享资源，将会影响程序运行的正确性。
-保证访问共享资源的进程之间是互斥的，就能保证程序执行的原子性。
- 通过 synchronized 实现的管程
-在Java中，通过 synchronized 关键字提供互斥原语，对对象尝试加锁，如
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-02-22</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/MyBatis/MyBatis%E7%AE%80%E4%BB%8B/">
-				<h2 class="index-title">
-					MyBatis简介
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-04-12</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/4-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/">
-				<h2 class="index-title">
-					线程同步
-				</h2>
-				<div class="index-brief">
-					多个线程同时工作，经常会需要步调一致。
- 通过 join() 方法等待线程结束
-例，两个线程一个执行不同的查询，最终比较结果后写入差异：
-while(存在未对账订单)&#123;
-
-    // 查询未对账订单
-    Thread T1 = new Thread(()-&gt;&#123;
-   
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2021-03-31</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-			<a class="extend prev" rel="prev" href="/page/2/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">&gt;</a>
-		
-	</div>
 </div>
 
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/15-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/01-IoC%E5%AE%B9%E5%99%A8/">
+                01-IoC容器
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>
