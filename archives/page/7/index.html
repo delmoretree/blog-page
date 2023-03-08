@@ -484,15 +484,6 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file">
-									<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/">
-										MySQL常见操作
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
 								<li class=" directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -1142,33 +1133,6 @@ var _hmt = _hmt || [];
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/13-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/">
-				<h2 class="index-title">
-					MySQL常见操作
-				</h2>
-				<div class="index-brief">
-					 用户管理
-
-
-查询用户
-select user,host,plugin,authentication_string from mysql.user;
-
-
-
-添加用户
-create user '用户名'@'主机地址' identified with mysql_native_password by 
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-10-12</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
 			<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.%E8%A7%84%E8%8C%83%E4%B8%8E%E9%87%8D%E6%9E%84/%E9%87%8D%E6%9E%84/">
 				<h2 class="index-title">
 					重构
@@ -1378,6 +1342,31 @@ KISS（Keep It Short and Simple）：尽量保持简单。
                 </div>
 		</div>	
 	
+		<div class="index-li">
+			<a href="/14-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%85%85%E8%A1%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%B4%AB%E8%A1%80%E6%A8%A1%E5%9E%8B/">
+				<h2 class="index-title">
+					充血模型和贫血模型
+				</h2>
+				<div class="index-brief">
+					 贫血模型
+ 概念
+只包含数据，不包含业务逻辑的类，就叫作 贫血模型（Anemic Domain Model） 。
+ 结构
+在前后端分离的项目中，服务端基于 MVC 三层架构，分为 ：
+
+Repository 层： 负责数据访问。返回 Entity 结构数据。
+Service 层：负责业务逻辑。调用
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2020-09-30</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
 	
 	<div id="index-paginator">
 		
@@ -1387,18 +1376,7 @@ KISS（Keep It Short and Simple）：尽量保持简单。
 </div>
 
 	</div>
-	<div id="footer">
-	<p>
-	©2019-<span id="footerYear"></span> 
-	<a href="/">Delmore</a> 
 	
-	
-	<br>
-	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
-	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
-	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
-	</p>
-</div>
 <script type="text/javascript"> 
 	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
 </script>
