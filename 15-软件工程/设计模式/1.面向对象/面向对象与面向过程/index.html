@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+
+	<!-- title -->
+	
+	<title>
+	
+		面向对象与面向过程 | 
+	 
+	tech note
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.baidu.com/s?wd=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "blog.technote.tech";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.4.14/dist/Valine.min.js"></script>
+
+	
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <div class="side-btn"></div>
+    <a id="title" href="/" class="logo">tech note</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/delmoretree" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<div id="site-toc">
+	    <div class="side-btn"></div>
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-代数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/01-%E7%9F%A9%E9%98%B5/">
+										01-矩阵
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/02-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/">
+										02-线性空间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/03-%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84/">
+										03-线性映射
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/04-%E5%A4%9A%E9%A1%B9%E5%BC%8F/">
+										04-多项式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/05-%E7%89%B9%E5%BE%81%E5%80%BC/">
+										05-特征值
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/06-%E7%9B%B8%E4%BC%BC%E6%A0%87%E5%87%86%E5%9E%8B/">
+										06-相似标准型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/07-%E4%BA%8C%E6%AC%A1%E5%9E%8B/">
+										07-二次型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/08-%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4/">
+										08-内积空间
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/09-%E7%BE%A4%E8%AE%BA/">
+										09-群论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/10-%E7%8E%AF%E8%AE%BA/">
+										10-环论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/01-%E4%BB%A3%E6%95%B0%E5%AD%A6/11-%E5%9F%9F%E8%AE%BA/">
+										11-域论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-分析学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/01-%E5%AE%9E%E6%95%B0%E7%B3%BB%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%80%A7/">
+										01-实数系的连续性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/02-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/">
+										02-数列极限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/03-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90/">
+										03-函数极限
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/04-%E6%97%A0%E7%A9%B7%E5%B0%8F/">
+										04-无穷小
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/05-%E8%BF%9E%E7%BB%AD%E4%B8%8E%E9%97%B4%E6%96%AD/">
+										05-连续与间断
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/06-%E5%AF%BC%E6%95%B0/">
+										06-导数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/07-%E5%BE%AE%E5%88%86/">
+										07-微分
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/02-%E5%88%86%E6%9E%90%E5%AD%A6/08-%E5%BE%AE%E5%88%86%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/">
+										08-微分中值定理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-初等数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/03-%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/%E4%B8%8D%E7%AD%89%E5%BC%8F/">
+										不等式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/03-%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/">
+										数理逻辑
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										11-组成原理
+									</a>
+									
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1. 指令
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-1-%E6%8C%87%E4%BB%A4%E6%A6%82%E8%BF%B0/">
+										1-1-指令概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-2-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4/">
+										1-2-算数运算指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-3-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4/">
+										1-3-数据传输指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-4-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4/">
+										1-4-逻辑运算指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-5-%E5%86%B3%E7%AD%96%E6%8C%87%E4%BB%A4/">
+										1-5-决策指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/1-6-%E8%BF%87%E7%A8%8B%E7%9A%84%E6%89%A7%E8%A1%8C/">
+										1-6-过程的执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/11-%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/1.%20%E6%8C%87%E4%BB%A4/%E9%99%84-MIPS%E6%8C%87%E4%BB%A4/">
+										附-MIPS指令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										12-操作系统
+									</a>
+									
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										进程管理
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/1-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+										1-进程与线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/2-%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5/">
+										2-互斥与同步
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/3-%E6%AD%BB%E9%94%81%E4%B8%8E%E9%A5%A5%E9%A5%BF/">
+										3-死锁与饥饿
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										13-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/13-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/">
+										树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										14-数据库
+									</a>
+									
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/01%20%7C%20SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E7%9A%84%EF%BC%9F/">
+										01 | SQL查询语句是如何执行的？
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/1-MySQL%E7%9A%84%E6%89%A7%E8%A1%8C/">
+										1-MySQL的执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%9A%84%E9%94%81/">
+										MySQL的锁
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E4%BA%8B%E5%8A%A1/">
+										事务
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/14-%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/%E7%B4%A2%E5%BC%95/">
+										索引
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Redis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/14-%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+										数据结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										15-软件工程
+									</a>
+									
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										设计模式
+									</a>
+									
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1.面向对象
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%85%85%E8%A1%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%B4%AB%E8%A1%80%E6%A8%A1%E5%9E%8B/">
+										充血模型和贫血模型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7/">
+										四大特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E8%80%8C%E9%9D%9E%E5%AE%9E%E7%8E%B0%E7%BC%96%E7%A8%8B/">
+										基于接口而非实现编程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/">
+										面向对象与面向过程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2.设计原则
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/DRY%E5%8E%9F%E5%88%99/">
+										DRY原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/KISS%E3%80%81YAGNI%E5%8E%9F%E5%88%99/">
+										KISS、YAGNI原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/LOD%E5%8E%9F%E5%88%99/">
+										LOD原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/SOLID%E5%8E%9F%E5%88%99/">
+										SOLID原则
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/2.%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%80%A7/">
+										代码复用性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3.规范与重构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.%E8%A7%84%E8%8C%83%E4%B8%8E%E9%87%8D%E6%9E%84/%E9%87%8D%E6%9E%84/">
+										重构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										4.创建型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+										单例模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+										原型模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+										工厂模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.%E5%88%9B%E5%BB%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
+										建造者模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										5.结构型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/">
+										享元模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
+										代理模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">
+										桥接模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">
+										组合模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										装饰器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.%E7%BB%93%E6%9E%84%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										适配器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										6.行为型设计模式
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F/">
+										中介模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/">
+										模板模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">
+										策略模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/">
+										职责链模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+										观察者模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/6.%E8%A1%8C%E4%B8%BA%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+										迭代器模式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										16-软件开发
+									</a>
+									
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JAVA
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JAVA/%E5%86%85%E7%9C%81/">
+										内省
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/01-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">
+										01-JVM内存结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/JVM/02-%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+										02-自动内存管理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MyBatis
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/MyBatis/MyBatis%E7%AE%80%E4%BB%8B/">
+										MyBatis简介
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Spring
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/01-IoC%E5%AE%B9%E5%99%A8/">
+										01-IoC容器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/AOP%EF%BC%88%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%EF%BC%89/">
+										AOP（面向切面编程）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Spring/%E9%85%8D%E7%BD%AE/">
+										配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class=" directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										并发
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/0-Java%E7%BA%BF%E7%A8%8B/">
+										0-Java线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/1-%E5%B9%B6%E5%8F%91%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98/">
+										1-并发存在的问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/2-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%81%E6%80%A7%E5%92%8C%E6%9C%89%E5%BA%8F%E6%80%A7%E9%97%AE%E9%A2%98/">
+										2-Java内存模型解决可见性和有序性问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/3-%E4%BA%92%E6%96%A5%E9%94%81%E8%A7%A3%E5%86%B3%E5%8E%9F%E5%AD%90%E6%80%A7%E9%97%AE%E9%A2%98/">
+										3-互斥锁解决原子性问题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/4-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/">
+										4-线程同步
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="top_level directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										17-系统运维
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/17-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/CentOS%E4%B8%AD%E7%9A%84RabbitMQ/">
+										CentOS中的RabbitMQ
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/17-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/GitLab%E6%8E%92%E9%94%99/">
+										GitLab排错
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/17-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/Linux%E6%8C%82%E8%BD%BDWindows%E5%85%B1%E4%BA%AB%E7%9B%98/">
+										Linux挂载Windows共享盘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/17-%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE/">
+										防火墙设置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+									
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+	面向对象与面向过程
+</h1>
+
+<div id="article-content">
+	<h1 id="面向过程的定义"><a class="markdownIt-Anchor" href="#面向过程的定义"></a> 面向过程的定义</h1>
+<p><code>面向过程编程</code> 是一种编程范式或编程风格。</p>
+<ul>
+<li>它以 <code>过程</code>（可以理解为方法、函数、操作）作为组织代码的基本单元，以 <code>数据</code>（可以理解为成员变量、属性）与方法相分离为最主要的特点。</li>
+<li>面向过程风格是一种 <strong>流程化</strong> 的编程风格，通过拼接一组顺序执行的方法来操作数据完成一项功能。</li>
+</ul>
+<p><code>面向过程编程语言</code> 最大的特点是不支持类和对象两个语法概念，不支持丰富的面向对象编程特性（比如继承、多态、封装），仅支持面向过程编程。</p>
+<h1 id="与面向对象的区别"><a class="markdownIt-Anchor" href="#与面向对象的区别"></a> 与面向对象的区别</h1>
+<h2 id="代码的组织方式不同"><a class="markdownIt-Anchor" href="#代码的组织方式不同"></a> 代码的组织方式不同</h2>
+<ul>
+<li>面向过程风格的代码被组织成了一组方法集合及其数据结构，方法和数据结构的定义是分开的。</li>
+<li>面向对象风格的代码被组织成一组类，方法和数据结构被绑定一起，定义在类中。</li>
+</ul>
+<h2 id="oop-更加能够应对大规模复杂程序的开发"><a class="markdownIt-Anchor" href="#oop-更加能够应对大规模复杂程序的开发"></a> OOP 更加能够应对大规模复杂程序的开发</h2>
+<ul>
+<li>简单的程序容易被划分成顺序执行的几个步骤。</li>
+<li>大规模复杂程序的开发来说，整个程序的处理流程错综复杂，并非只有一条主线。如果把整个程序的处理流程画出来的话，会是一个网状结构。如果我们再用面向过程编程这种流程化、线性的思维方式，去翻译这个网状结构，去思考如何把程序拆解为一组顺序执行的方法，就会比较吃力。这个时候，面向对象的编程风格的优势就比较明显了。</li>
+<li>面向对象编程是以类为思考对象。先去思考如何给业务建模，如何将需求翻译为类，如何给类之间建立交互关系，而完成这些工作完全不需要考虑错综复杂的处理流程。当我们有了类的设计之后，然后再像搭积木一样，按照处理流程，将类组装起来形成整个程序。这种开发模式、思考问题的方式，能让我们在应对复杂程序开发的时候，思路更加清晰。</li>
+<li>面向对象编程提供了一种更加清晰的、更加模块化的代码组织方式。业务逻辑复杂，代码量大的模块，可能要定义数百个函数、数百个数据结构，类就是一种非常好的组织这些函数和数据结构的方式，是一种将代码模块化的有效手段。</li>
+<li>面向过程编程和面向对象编程并非完全对立的。很多软件开发中，尽管利用的是面向过程的编程语言，也都有借鉴面向对象编程的一些优点。</li>
+</ul>
+<h2 id="oop-风格的代码更易复用-易扩展-易维护"><a class="markdownIt-Anchor" href="#oop-风格的代码更易复用-易扩展-易维护"></a> OOP 风格的代码更易复用、易扩展、易维护</h2>
+<p>面向过程编程是一种非常简单的编程风格，并没有像面向对象编程那样提供丰富的特性。</p>
+<ul>
+<li><strong>封装特性更有利于提高代码的易维护性。</strong> 将数据和方法绑定在一起，通过访问权限控制，只允许外部调用者通过类暴露的有限方法访问数据，而不会像面向过程编程那样，数据可以被任意方法随意修改。</li>
+<li><strong>抽象特性可以提高代码的可扩展性。</strong> 基于接口的抽象，可以让我们在不改变原有实现的情况下，轻松替换新的实现逻辑。</li>
+<li><strong>继承特性可以提高代码的复用性。</strong> 如果两个类有一些相同的属性和方法，我们就可以将这些相同的代码，抽取到父类中，让两个子类继承父类。这样两个子类也就可以重用父类中的代码，避免了代码重复写多遍。</li>
+<li><strong>多态特性也可以提高代码的复用性。</strong> 在子类中重写原来的功能逻辑，用子类替换父类。在实际的代码运行过程中，调用子类新的功能逻辑，而不是在原有代码上做修改。这就遵从了“对修改关闭、对扩展开放”的设计原则。</li>
+</ul>
+<h2 id="oop-语言更加人性化-更加高级-更加智能"><a class="markdownIt-Anchor" href="#oop-语言更加人性化-更加高级-更加智能"></a> OOP 语言更加人性化、更加高级、更加智能</h2>
+<p>跟二进制指令、汇编语言、面向过程编程语言相比，面向对象编程语言的编程套路、思考问题的方式，是完全不一样的。前三者是一种计算机思维方式，而面向对象是一种人类的思维方式。<br />
+进行面向对象编程时候，我们是在思考，如何给业务建模，如何将真实的世界映射为类或者对象，这让我们更加能聚焦到业务本身，而不是思考如何跟机器打交道。<br />
+可以这么说，越高级的编程语言离机器越“远”，离我们人类越“近”，越“智能”。</p>
+<h1 id="假面向对象"><a class="markdownIt-Anchor" href="#假面向对象"></a> 假面向对象</h1>
+<h2 id="滥用-getter-setter-方法"><a class="markdownIt-Anchor" href="#滥用-getter-setter-方法"></a> 滥用 getter、setter 方法</h2>
+<p>为每个属性都定义 <code>getter</code> 和 <code>setter</code> 方法，违反了面向对象编程的封装特性，相当于将面向对象编程风格退化成了面向过程编程风格。如：</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShoppingCart</span> </span>&#123;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> itemsCount;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> totalPrice;
+  <span class="hljs-keyword">private</span> List&lt;ShoppingCartItem&gt; items = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getItemsCount</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.itemsCount;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setItemsCount</span><span class="hljs-params">(<span class="hljs-keyword">int</span> itemsCount)</span> </span>&#123;
+    <span class="hljs-keyword">this</span>.itemsCount = itemsCount;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getTotalPrice</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.totalPrice;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTotalPrice</span><span class="hljs-params">(<span class="hljs-keyword">double</span> totalPrice)</span> </span>&#123;
+    <span class="hljs-keyword">this</span>.totalPrice = totalPrice;
+  &#125;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;ShoppingCartItem&gt; <span class="hljs-title">getItems</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.items;
+  &#125;
+  
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addItem</span><span class="hljs-params">(ShoppingCartItem item)</span> </span>&#123;
+    items.add(item);
+    itemsCount++;
+    totalPrice += item.getPrice();
+  &#125;
+
+  <span class="hljs-comment">// ...省略其他方法...</span>
+&#125;
+</code></pre>
+<blockquote>
+<ul>
+<li><code>itemsCount</code> 和 <code>totalPrice</code>。虽然我们将它们定义成 <code>private</code> 私有属性，但是提供了 <code>public</code> 的 <code>getter</code>、<code>setter</code> 方法，这就跟将这两个属性定义为 <code>public</code> 公有属性，没有什么两样了。</li>
+<li>任何代码都可以随意调用 <code>setter</code> 方法，来重新设置 <code>itemsCount</code>、<code>totalPrice</code> 属性的值，这也会导致其跟 <code>items</code> 属性的值不一致。</li>
+<li>暴露不应该暴露的 <code>setter</code> 方法，明显违反了面向对象的封装特性。</li>
+<li><code>items</code> 属性返回的是一个 <code>List</code> 集合容器。外部调用者在拿到这个容器之后，是可以操作容器内部数据的，也就是说，外部代码还是能修改 <code>items</code> 中的数据，导致 <code>itemsCount</code>、<code>totalPrice</code>、<code>items</code> 三者数据不一致。</li>
+</ul>
+</blockquote>
+<p>在设计实现类的时候，除非真的需要，否则，尽量不要给属性定义 <code>setter</code> 方法。除此之外，尽管 <code>getter</code> 方法相对 <code>setter</code> 方法要安全些，但是如果返回的是集合容器（比如例子中的 <code>List</code> 容器），也要防范集合内部数据被修改的危险。</p>
+<h2 id="滥用全局变量和全局方法"><a class="markdownIt-Anchor" href="#滥用全局变量和全局方法"></a> 滥用全局变量和全局方法</h2>
+<p>在面向对象编程中，常见的全局变量有：<code>单例类对象</code>、<code>静态成员变量</code>、<code>常量</code>等，常见的全局方法有<code>静态方法</code>。静态方法将方法与数据分离，破坏了封装特性，是典型的面向过程风格。</p>
+<h3 id="constants-类"><a class="markdownIt-Anchor" href="#constants-类"></a> Constants 类</h3>
+<p>一些代码中的配置参数，一般都设置为常量，放到一个配置类中。如：</p>
+<pre class="highlight"><code class="java">
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Constants</span> </span>&#123;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String MYSQL_ADDR_KEY = <span class="hljs-string">"mysql_addr"</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String MYSQL_DB_NAME_KEY = <span class="hljs-string">"db_name"</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String MYSQL_USERNAME_KEY = <span class="hljs-string">"mysql_username"</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String MYSQL_PASSWORD_KEY = <span class="hljs-string">"mysql_password"</span>;
+  
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String REDIS_DEFAULT_ADDR = <span class="hljs-string">"192.168.7.2:7234"</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> REDIS_DEFAULT_MAX_TOTAL = <span class="hljs-number">50</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> REDIS_DEFAULT_MAX_IDLE = <span class="hljs-number">50</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> REDIS_DEFAULT_MIN_IDLE = <span class="hljs-number">20</span>;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String REDIS_DEFAULT_KEY_PREFIX = <span class="hljs-string">"rt:"</span>;
+  
+  <span class="hljs-comment">// ...省略更多的常量定义...</span>
+&#125;
+
+</code></pre>
+<p>弊端：</p>
+<ul>
+<li><strong>影响代码的可维护性。</strong> 如果参与开发同一个项目的工程师有很多，在开发过程中，可能都要涉及修改这个类，比如往这个类里添加常量，那这个类就会变得越来越大，成百上千行都有可能，查找修改某个常量也会变得比较费时，而且还会增加提交代码冲突的概率。</li>
+<li><strong>影响代码的复用性。</strong> 即便某个类只依赖 <code>Constants</code> 类中的一小部分常量，我们仍然需要把整个 <code>Constants</code> 类也一并引入，也就引入了很多无关的常量到新的项目中。</li>
+</ul>
+<p>改进：</p>
+<ul>
+<li><strong>拆解。</strong> 将 <code>Constants</code> 类拆解为功能更加单一的多个类，比如跟 <code>MySQL</code> 配置相关的常量，我们放到 <code>MysqlConstants</code> 类中。</li>
+<li><strong>融合。</strong> 不单独地设计 <code>Constants</code> 常量类，而是哪个类用到了某个常量，我们就把这个常量定义到这个类中。</li>
+</ul>
+<h3 id="utils-类"><a class="markdownIt-Anchor" href="#utils-类"></a> Utils 类</h3>
+<p>将没有继承关系的两个类中，具有相同功能逻辑的部分抽取出来，定义为只包含静态方法的 <code>Utils</code> 类。达到代码复用的目的。</p>
+<p>只包含静态方法不包含任何属性的 <code>Utils</code> 类，是彻彻底底的面向过程的编程风格。但这并不是说，我们就要杜绝使用 <code>Utils</code> 类了。<br />
+而是要尽量避免滥用，不要不加思考地随意去定义 <code>Utils</code> 类。</p>
+<p>设计 <code>Utils</code> 类的时候，最好也能细化一下，针对不同的功能，设计不同的 <code>Utils</code> 类，比如 <code>FileUtils</code>、<code>IOUtils</code>、<code>StringUtils</code>、<code>UrlUtils</code> 等，不要设计一个过于大而全的 <code>Utils</code> 类。</p>
+<h2 id="定义数据和方法分离的类"><a class="markdownIt-Anchor" href="#定义数据和方法分离的类"></a> 定义数据和方法分离的类</h2>
+<p>基于贫血模型的开发模式：</p>
+<p>基于 MVC 三层结构做 Web 方面的后端开发，经常会将数据定义在一个类中，方法定义在另一个类中。<br />
+我们会定义相应的 <code>VO</code>（View Object）声明接口返回的数据、<code>BO</code>（Business Object）、<code>Entity</code>。一般情况下，<code>VO</code>、<code>BO</code>、<code>Entity</code> 中只会定义数据，不会定义方法，所有操作这些数据的业务逻辑都定义在对应的 <code>Controller</code> 类、<code>Service</code> 类、<code>Repository</code> 类中。这就是典型的面向过程的编程风格。</p>
+<p>详见 <a href="../%E5%85%85%E8%A1%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%B4%AB%E8%A1%80%E6%A8%A1%E5%9E%8B">充血模型和贫血模型</a></p>
+<h2 id="易于面向过程的原因"><a class="markdownIt-Anchor" href="#易于面向过程的原因"></a> 易于面向过程的原因</h2>
+<h3 id="思维方式不同"><a class="markdownIt-Anchor" href="#思维方式不同"></a> 思维方式不同</h3>
+<ul>
+<li>面向过程编程风格符合人的流程化思维方式，先做什么、后做什么，如何一步一步地顺序执行一系列操作，最后完成整个任务。</li>
+<li>面向对象编程风格正好相反。它是一种自底向上的思考方式。它不是先去按照执行流程来分解任务，而是将任务翻译成一个一个的小的模块（也就是类），设计类之间的交互，最后按照流程将类组装起来，完成整个任务。</li>
+</ul>
+<h3 id="复杂度不同"><a class="markdownIt-Anchor" href="#复杂度不同"></a> 复杂度不同</h3>
+<p>在面向对象编程中，类的设计还是挺需要技巧，挺需要一定设计经验的。你要去思考如何封装合适的数据和方法到一个类里，如何设计类之间的关系，如何设计类之间的交互等等诸多设计问题。</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E8%80%8C%E9%9D%9E%E5%AE%9E%E7%8E%B0%E7%BC%96%E7%A8%8B/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  基于接口而非实现编程
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/15-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7/">
+                四大特性
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
