@@ -1165,8 +1165,11 @@ var _hmt = _hmt || [];
 <p>这种结构称为 <strong>树</strong> 。 其中，每个元素都称为<strong>节点</strong>。</p>
 <p>用线连接的下层节点称为<strong>子节点</strong>，上图中节点 <code>1</code> 的子节点是 <code>3</code> 和 <code>5</code> ，节点 <code>3</code> 的子节点的 <code>2</code> 和 <code>4</code> ，节点 <code>5</code> 没有子节点。 用线连接的上层节点称为<strong>父节点</strong>，节点 <code>2</code> 和 <code>4</code> 的父节点是 <code>3</code> ，节点 <code>3</code> 和 <code>5</code> 的父节点是 <code>1</code> ，节点 <code>1</code> 没有父节点。</p>
 <p>最上层的节点没有父节点，称为<strong>根节点</strong>，最下层的节点没有子节点，称为 <strong>叶节点</strong>。如果一棵树的根节点也是叶节点，那么这棵树仅有一个节点。</p>
-<p>每个节点及与之连接的所有节点又可看成是一颗独立的树，称为<strong>子树</strong>，上图中 <code>1,3,5</code> 和 <code>3,2,4</code> 都可以构成独立的子树。</p>
-<p>下面给出树的最基本实现：</p>
+<p>每个节点及与之连接的所有节点又可看成是一颗独立的树，称为该节点的<strong>子树</strong>，上图中 <code>1,3,5</code> 和 <code>3,2,4</code> 都可以构成独立的子树。</p>
+<p>树的根节点是第一层，根节点的子节点是第二层，以此类推，组成树中节点的<strong>层次</strong>。若某节点在第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span> 层，那么他的子树的根节点在第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">l+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 层。树中节点的最大层次称为树的<strong>深度</strong>。如上图所示，根节点 <code>1</code> 在第一层，<code>3</code> 和 <code>5</code> 在第二层， <code>2</code> 和 <code>4</code> 在第三层，树的深度是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span> 。</p>
+<p>若一棵树的节点不是有序的，称为<strong>无序树</strong> ，否则称<strong>有序树</strong>。上图的树是一颗有序树。若一颗树的最大子节点数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> ，则称这棵树是一个<strong>二叉树</strong>，如上图中的树就是一颗二叉树。</p>
+<h1 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h1>
+<p>二叉树是的任意一个节点的子树（如果有）都不超过 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 颗。其定义如下：</p>
 <pre class="highlight"><code class="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tree</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;
     
     <span class="hljs-comment">// 根节点</span>
@@ -1174,6 +1177,8 @@ var _hmt = _hmt || [];
     
     <span class="hljs-comment">// 节点定义</span>
     <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;
+        
+        <span class="hljs-comment">// 节点的值</span>
         <span class="hljs-keyword">private</span> T value;
         
         <span class="hljs-comment">// 左子节点</span>
@@ -1184,9 +1189,6 @@ var _hmt = _hmt || [];
     &#125;
 &#125;
 </code></pre>
-<blockquote>
-<p>可以看出，树的定义是通过递归给出的。</p>
-</blockquote>
 
 </div>
 
@@ -1194,16 +1196,16 @@ var _hmt = _hmt || [];
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/1-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+              <a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/2-%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  进程与线程
+                  互斥与同步
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/16-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/%E5%B9%B6%E5%8F%91/3-%E4%BA%92%E6%96%A5%E9%94%81%E8%A7%A3%E5%86%B3%E5%8E%9F%E5%AD%90%E6%80%A7%E9%97%AE%E9%A2%98/">
-                互斥锁解决原子性问题
+              <a href="/12-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/1-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">
+                进程与线程
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
